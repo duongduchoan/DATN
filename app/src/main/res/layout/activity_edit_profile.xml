@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chỉnh sửa hồ sơ" android:textColor="#009688" android:textSize="24sp" android:textStyle="bold" />
+
+        <ImageView android:id="@+id/imgAvatar" android:layout_width="104dp" android:layout_height="104dp" android:layout_marginTop="16dp" android:background="@drawable/bg_circle" android:scaleType="centerCrop" />
+        <Button android:id="@+id/btnPickAvatar" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Đổi ảnh đại diện" />
+
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:hint="Họ và tên">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Số điện thoại">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:hint="Email (không thể thay đổi)">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:enabled="false" android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="20dp" android:backgroundTint="#009688" android:text="Lưu thay đổi" />
+        <ProgressBar android:id="@+id/progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

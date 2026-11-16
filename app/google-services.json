@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "906962647202",
+    "firebase_url": "https://qlpt-9e37b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "qlpt-9e37b",
+    "storage_bucket": "qlpt-9e37b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906962647202:android:45ead98288b47e65557ffb",
+        "android_client_info": {
+          "package_name": "com.hoan.qlpt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906962647202-t77kr6q4773a67mmgs2ljtm0d6i9550s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwowc43eKNzWXXMx8tcDWdHu6e1uz6krI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906962647202-t77kr6q4773a67mmgs2ljtm0d6i9550s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

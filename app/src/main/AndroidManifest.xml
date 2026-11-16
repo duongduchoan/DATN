@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name=".QLPTApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.QLPT">
+
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.landlord.LandlordMainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.tenant.TenantMainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.admin.AdminMainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.landlord.AddRoomActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activity.guest.RoomDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.landlord.CreateContractActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.landlord.CreateInvoiceActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activity.tenant.InvoiceDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.landlord.AddHouseActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activity.landlord.BankInfoActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activity.tenant.RequestLandlordActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activity.admin.RoleRequestDetailActivity" android:exported="false" />
+        <activity android:name=".activity.NotificationsActivity" android:exported="false" />
+        <activity android:name=".activity.tenant.StatsActivity" android:exported="false" />
+        <activity android:name=".activity.landlord.EditRoomActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activity.EditProfileActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activity.ChangePasswordActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activity.landlord.MyHousesActivity" android:exported="false" />
+        <activity android:name=".activity.IncidentsActivity" android:exported="false" />
+        <activity android:name=".activity.CreateIncidentActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activity.IncidentDetailActivity" android:exported="false" />
+        <activity android:name=".activity.tenant.MyRentalRequestsActivity" android:exported="false" />
+        <activity android:name=".activity.tenant.SavedRoomsActivity" android:exported="false" />
+        <activity android:name=".activity.landlord.TenantsActivity" android:exported="false" />
+        <activity android:name=".activity.tenant.BookVisitActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+
+    </application>
+
+</manifest>
