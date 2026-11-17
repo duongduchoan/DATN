@@ -1,5 +1,4 @@
 package com.hoan.qlpt.activity.tenant;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +19,7 @@ import com.hoan.qlpt.activity.guest.RoomDetailActivity;
 import com.hoan.qlpt.adapter.ApprovalAdapter;
 import com.hoan.qlpt.model.ApprovalItem;
 import com.hoan.qlpt.model.RentalRequest;
+import com.hoan.qlpt.util.EmptyState;
 import com.hoan.qlpt.util.Notifier;
 
 import java.text.SimpleDateFormat;
@@ -48,8 +48,13 @@ public class MyRentalRequestsActivity extends AppCompatActivity {
         EmptyState.set(tvEmpty, "📨", "Bạn chưa gửi yêu cầu thuê nào", "Vào tab Tìm phòng để bắt đầu");
 
         adapter = new ApprovalAdapter(items, new ApprovalAdapter.Listener() {
-            @Override public void onApprove(ApprovalItem it) {}
-            @Override public void onReject(ApprovalItem it) {}
+            @Override
+            public void onApprove(ApprovalItem it) {
+            }
+
+            @Override
+            public void onReject(ApprovalItem it) {
+            }
         });
         adapter.setShowActions(false);
         adapter.setOnItemClick(this::onItemClick);
@@ -68,23 +73,34 @@ public class MyRentalRequestsActivity extends AppCompatActivity {
     private String statusText(String s) {
         if (s == null) return "";
         switch (s) {
-            case "approved": return "Chủ trọ đã xác nhận lịch xem phòng";
-            case "contracted": return "Đã có hợp đồng";
-            case "rejected": return "Bị từ chối";
-            case "cancelled": return "Đã hủy";
-            default: return "Đang chờ chủ trọ xác nhận lịch";
+            case "approved":
+                return "Chủ trọ đã xác nhận lịch xem phòng";
+            case "contracted":
+                return "Đã có hợp đồng";
+            case "rejected":
+                return "Bị từ chối";
+            case "cancelled":
+                return "Đã hủy";
+            default:
+                return "Đang chờ chủ trọ xác nhận lịch";
         }
     }
 
     private void load() {
         String uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
         db.collection("rentalRequests").whereEqualTo("tenantId", uid).get()
                 .addOnSuccessListener(snap -> {
                     List<RentalRequest> list = new ArrayList<>();
                     for (DocumentSnapshot d : snap.getDocuments()) {
                         RentalRequest r = d.toObject(RentalRequest.class);
-                        if (r != null) { r.setId(d.getId()); list.add(r); }
+                        if (r != null) {
+                            r.setId(d.getId());
+                            list.add(r);
+                        }
                     }
                     Collections.sort(list, (a, b) -> Long.compare(b.getCreatedAt(), a.getCreatedAt()));
 
@@ -94,7 +110,7 @@ public class MyRentalRequestsActivity extends AppCompatActivity {
                                 ? "" : "\nLời nhắn: " + r.getMessage();
                         String visit = r.getVisitDate() > 0
                                 ? "Lịch xem: " + new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                                        .format(new Date(r.getVisitDate())) + "\n" : "";
+                                .format(new Date(r.getVisitDate())) + "\n" : "";
                         items.add(new ApprovalItem(r.getId(), r.getRoomTitle(), statusText(r.getStatus()),
                                 visit + "Gửi lúc " + fmt.format(new Date(r.getCreatedAt())) + msg, r));
                     }
@@ -110,7 +126,8 @@ public class MyRentalRequestsActivity extends AppCompatActivity {
             new AlertDialog.Builder(this)
                     .setTitle(r.getRoomTitle())
                     .setItems(new String[]{"Xem phòng", "Hủy yêu cầu"}, (d, which) -> {
-                        if (which == 0) openRoom(r); else confirmCancel(r);
+                        if (which == 0) openRoom(r);
+                        else confirmCancel(r);
                     })
                     .setNegativeButton("Đóng", null)
                     .show();
@@ -142,5 +159,7 @@ public class MyRentalRequestsActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void toast(String m) { Toast.makeText(this, m, Toast.LENGTH_LONG).show(); }
+    private void toast(String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
 }

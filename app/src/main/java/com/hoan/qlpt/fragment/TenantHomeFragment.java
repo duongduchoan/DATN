@@ -1,6 +1,4 @@
-
 package com.hoan.qlpt.fragment;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,10 +6,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,15 +21,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.activity.tenant.InvoiceDetailActivity;
 import com.hoan.qlpt.model.Contract;
+import com.hoan.qlpt.util.EmptyState;
+import com.hoan.qlpt.util.Notifier;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import android.widget.Button;
-import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
-import com.hoan.qlpt.util.Notifier;
 
 public class TenantHomeFragment extends Fragment {
 
@@ -46,7 +45,7 @@ public class TenantHomeFragment extends Fragment {
                 container,
                 false
         );
-        EmptyState.set((TextView) root.findViewById(R.id.tvEmpty), "🔑", "Bạn chưa có hợp đồng thuê nào", "Vào tab Tìm phòng và gửi yêu cầu thuê");
+        EmptyState.set(root.findViewById(R.id.tvEmpty), "🔑", "Bạn chưa có hợp đồng thuê nào", "Vào tab Tìm phòng và gửi yêu cầu thuê");
         root.findViewById(R.id.btnMyRequests).setOnClickListener(v -> startActivity(
                 new Intent(requireContext(), com.hoan.qlpt.activity.tenant.MyRentalRequestsActivity.class)));
         root.findViewById(R.id.btnSaved).setOnClickListener(v -> startActivity(
@@ -142,7 +141,7 @@ public class TenantHomeFragment extends Fragment {
                         String phone = p.getString("phone");
                         ((TextView) root.findViewById(R.id.tvLandlord)).setText(
                                 "Chủ trọ: " + (name == null ? "(chưa có tên)" : name)
-                                + (phone == null || phone.isEmpty() ? "" : "\n" + phone));
+                                        + (phone == null || phone.isEmpty() ? "" : "\n" + phone));
 
                         View call = root.findViewById(R.id.btnCallLandlord);
                         if (phone != null && !phone.isEmpty()) {
@@ -264,6 +263,7 @@ public class TenantHomeFragment extends Fragment {
                     });
                 });
     }
+
     private void bindReturn(String contractId, Contract c) {
         Button btn = root.findViewById(R.id.btnReturn);
         TextView info = root.findViewById(R.id.tvReturnInfo);

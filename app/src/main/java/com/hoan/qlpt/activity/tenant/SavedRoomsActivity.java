@@ -1,5 +1,4 @@
 package com.hoan.qlpt.activity.tenant;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ import com.hoan.qlpt.R;
 import com.hoan.qlpt.activity.guest.RoomDetailActivity;
 import com.hoan.qlpt.adapter.RoomAdapter;
 import com.hoan.qlpt.model.Room;
+import com.hoan.qlpt.util.EmptyState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +58,10 @@ public class SavedRoomsActivity extends AppCompatActivity {
 
     private void load() {
         String uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
         db.collection("favorites").whereEqualTo("userId", uid).get()
                 .addOnSuccessListener(snap -> {
                     List<String> ids = new ArrayList<>();
@@ -66,7 +69,10 @@ public class SavedRoomsActivity extends AppCompatActivity {
                         String rid = d.getString("roomId");
                         if (rid != null) ids.add(rid);
                     }
-                    if (ids.isEmpty()) { show(new ArrayList<>()); return; }
+                    if (ids.isEmpty()) {
+                        show(new ArrayList<>());
+                        return;
+                    }
 
                     // Phòng không còn đọc được (bị gỡ, từ chối) thì bỏ qua
                     List<Room> loaded = new ArrayList<>();

@@ -49,8 +49,14 @@ public class StatsActivity extends AppCompatActivity {
         StatCard.label(root, R.id.stMax, "Tháng cao nhất");
         StatCard.label(root, R.id.stMin, "Tháng thấp nhất");
 
-        findViewById(R.id.btnPrevYear).setOnClickListener(v -> { year--; render(); });
-        findViewById(R.id.btnNextYear).setOnClickListener(v -> { year++; render(); });
+        findViewById(R.id.btnPrevYear).setOnClickListener(v -> {
+            year--;
+            render();
+        });
+        findViewById(R.id.btnNextYear).setOnClickListener(v -> {
+            year++;
+            render();
+        });
 
         ((ChipGroup) findViewById(R.id.chipGroupMode)).setOnCheckedStateChangeListener((g, ids) -> {
             int id = ids.isEmpty() ? R.id.chipTotal : ids.get(0);
@@ -65,7 +71,10 @@ public class StatsActivity extends AppCompatActivity {
 
     private void load() {
         String uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
         FirebaseFirestore.getInstance().collection("invoices")
                 .whereEqualTo("tenantId", uid).get()
                 .addOnSuccessListener(snap -> {
@@ -84,9 +93,12 @@ public class StatsActivity extends AppCompatActivity {
 
     private long valueOf(Invoice i) {
         switch (mode) {
-            case ELEC: return Math.max(0, i.getElecNew() - i.getElecOld()) * i.getElecPrice();
-            case WATER: return Math.max(0, i.getWaterNew() - i.getWaterOld()) * i.getWaterPrice();
-            default: return i.getTotal();
+            case ELEC:
+                return Math.max(0, i.getElecNew() - i.getElecOld()) * i.getElecPrice();
+            case WATER:
+                return Math.max(0, i.getWaterNew() - i.getWaterOld()) * i.getWaterPrice();
+            default:
+                return i.getTotal();
         }
     }
 

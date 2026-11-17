@@ -14,7 +14,9 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
 
     private final List<String> urls;
 
-    public ImageSliderAdapter(List<String> urls) { this.urls = urls; }
+    public ImageSliderAdapter(List<String> urls) {
+        this.urls = urls;
+    }
 
     @NonNull
     @Override
@@ -32,10 +34,16 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
     }
 
     @Override
-    public int getItemCount() { return urls.size(); }
+    public int getItemCount() {
+        return urls.size();
+    }
 
     static class VH extends RecyclerView.ViewHolder {
         ImageView img;
-        VH(ImageView v) { super(v); img = v; }
+
+        VH(ImageView v) {
+            super(v);
+            img = v;
+        }
     }
 }

@@ -49,12 +49,18 @@ public class InvoiceDetailActivity extends AppCompatActivity {
         tvCashNote = findViewById(R.id.tvCashNote);
 
         String id = getIntent().getStringExtra("invoiceId");
-        if (id == null) { finish(); return; }
+        if (id == null) {
+            finish();
+            return;
+        }
 
         FirebaseFirestore.getInstance().collection("invoices").document(id).get()
                 .addOnSuccessListener(d -> {
                     invoice = d.toObject(Invoice.class);
-                    if (invoice == null) { finish(); return; }
+                    if (invoice == null) {
+                        finish();
+                        return;
+                    }
                     invoice.setId(d.getId());
                     bind();
                 })
@@ -73,9 +79,13 @@ public class InvoiceDetailActivity extends AppCompatActivity {
         return "";
     }
 
-    private void setText(int id, String s) { ((TextView) findViewById(id)).setText(s); }
+    private void setText(int id, String s) {
+        ((TextView) findViewById(id)).setText(s);
+    }
 
-    private String money(long v) { return nf.format(v) + "đ"; }
+    private String money(long v) {
+        return nf.format(v) + "đ";
+    }
 
     private void bind() {
         Invoice i = invoice;
@@ -84,9 +94,17 @@ public class InvoiceDetailActivity extends AppCompatActivity {
 
         TextView st = findViewById(R.id.tvStatus);
         switch (i.getStatus()) {
-            case "paid": st.setText("Đã thanh toán"); st.setTextColor(0xFF2E7D32); break;
-            case "pending": st.setText("Chờ chủ trọ xác nhận"); st.setTextColor(0xFFFF9800); break;
-            default: st.setText("Chưa thanh toán"); st.setTextColor(0xFFE53935);
+            case "paid":
+                st.setText("Đã thanh toán");
+                st.setTextColor(0xFF2E7D32);
+                break;
+            case "pending":
+                st.setText("Chờ chủ trọ xác nhận");
+                st.setTextColor(0xFFFF9800);
+                break;
+            default:
+                st.setText("Chưa thanh toán");
+                st.setTextColor(0xFFE53935);
         }
 
         TextView tvMethod = findViewById(R.id.tvMethod);
@@ -119,8 +137,10 @@ public class InvoiceDetailActivity extends AppCompatActivity {
         rbTransfer.setEnabled(hasBank);
         rbTransfer.setText(hasBank ? "Chuyển khoản (quét mã QR)"
                 : "Chuyển khoản (chủ trọ chưa cập nhật tài khoản)");
-        if (hasBank) { rbTransfer.setChecked(true); setupQr(); }
-        else rbCash.setChecked(true);
+        if (hasBank) {
+            rbTransfer.setChecked(true);
+            setupQr();
+        } else rbCash.setChecked(true);
         updateMethodUi();
     }
 

@@ -1,5 +1,4 @@
 package com.hoan.qlpt.activity.landlord;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.ApprovalAdapter;
 import com.hoan.qlpt.model.ApprovalItem;
 import com.hoan.qlpt.model.House;
+import com.hoan.qlpt.util.EmptyState;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,8 +39,13 @@ public class MyHousesActivity extends AppCompatActivity {
         EmptyState.set(tvEmpty, "🏠", "Bạn chưa có nhà trọ nào", "Thêm nhà trọ ở màn hình Thêm phòng");
         RecyclerView rv = findViewById(R.id.rvPending);
         adapter = new ApprovalAdapter(items, new ApprovalAdapter.Listener() {
-            @Override public void onApprove(ApprovalItem it) {}
-            @Override public void onReject(ApprovalItem it) {}
+            @Override
+            public void onApprove(ApprovalItem it) {
+            }
+
+            @Override
+            public void onReject(ApprovalItem it) {
+            }
         });
         adapter.setShowActions(false);
         adapter.setOnItemClick(this::onItemClick);
@@ -56,13 +61,19 @@ public class MyHousesActivity extends AppCompatActivity {
 
     private void load() {
         String uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
         db.collection("houses").whereEqualTo("landlordId", uid).get()
                 .addOnSuccessListener(snap -> {
                     List<House> houses = new ArrayList<>();
                     for (DocumentSnapshot d : snap.getDocuments()) {
                         House h = d.toObject(House.class);
-                        if (h != null) { h.setId(d.getId()); houses.add(h); }
+                        if (h != null) {
+                            h.setId(d.getId());
+                            houses.add(h);
+                        }
                     }
                     Collections.sort(houses, (a, b) -> Long.compare(b.getCreatedAt(), a.getCreatedAt()));
 
@@ -70,14 +81,17 @@ public class MyHousesActivity extends AppCompatActivity {
                     for (House h : houses) {
                         String st;
                         switch (h.getStatus() == null ? "approved" : h.getStatus()) {
-                            case "pending": st = "Chờ admin duyệt"; break;
+                            case "pending":
+                                st = "Chờ admin duyệt";
+                                break;
                             case "rejected":
                                 st = "Bị từ chối"
                                         + (h.getRejectReason() == null || h.getRejectReason().isEmpty()
                                         ? "" : ": " + h.getRejectReason())
                                         + "\n(bấm để gửi lại)";
                                 break;
-                            default: st = "Đã duyệt";
+                            default:
+                                st = "Đã duyệt";
                         }
                         items.add(new ApprovalItem(h.getId(), h.getName(),
                                 h.getAddress() + ", " + h.getDistrict(), st, h));

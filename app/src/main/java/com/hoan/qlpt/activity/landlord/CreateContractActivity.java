@@ -1,5 +1,4 @@
 package com.hoan.qlpt.activity.landlord;
-import com.hoan.qlpt.util.MoneyTextWatcher;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.model.Contract;
+import com.hoan.qlpt.util.MoneyTextWatcher;
 import com.hoan.qlpt.util.Notifier;
 
 import java.text.SimpleDateFormat;
@@ -45,7 +45,10 @@ public class CreateContractActivity extends AppCompatActivity {
         roomTitle = getIntent().getStringExtra("roomTitle");
         tenantId = getIntent().getStringExtra("tenantId");
         tenantName = getIntent().getStringExtra("tenantName");
-        if (requestId == null || roomId == null || tenantId == null) { finish(); return; }
+        if (requestId == null || roomId == null || tenantId == null) {
+            finish();
+            return;
+        }
 
         ((TextView) findViewById(R.id.tvRoom)).setText("Phòng: " + roomTitle);
         ((TextView) findViewById(R.id.tvTenant)).setText("Người thuê: " + tenantName);
@@ -104,9 +107,18 @@ public class CreateContractActivity extends AppCompatActivity {
             toast("Giá hoặc tiền cọc không hợp lệ");
             return;
         }
-        if (price <= 0 || deposit < 0) { toast("Giá phải lớn hơn 0, cọc không âm"); return; }
-        if (startDate == 0 || endDate == 0) { toast("Vui lòng chọn ngày bắt đầu và kết thúc"); return; }
-        if (endDate <= startDate) { toast("Ngày kết thúc phải sau ngày bắt đầu"); return; }
+        if (price <= 0 || deposit < 0) {
+            toast("Giá phải lớn hơn 0, cọc không âm");
+            return;
+        }
+        if (startDate == 0 || endDate == 0) {
+            toast("Vui lòng chọn ngày bắt đầu và kết thúc");
+            return;
+        }
+        if (endDate <= startDate) {
+            toast("Ngày kết thúc phải sau ngày bắt đầu");
+            return;
+        }
 
         setLoading(true);
         // Kiểm tra phòng chưa có người thuê rồi mới tạo
@@ -141,8 +153,14 @@ public class CreateContractActivity extends AppCompatActivity {
                         toast("Đã tạo hợp đồng");
                         finish();
                     })
-                    .addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); });
-        }).addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); });
+                    .addOnFailureListener(e -> {
+                        setLoading(false);
+                        toast("Lỗi: " + e.getMessage());
+                    });
+        }).addOnFailureListener(e -> {
+            setLoading(false);
+            toast("Lỗi: " + e.getMessage());
+        });
     }
 
     private void setLoading(boolean loading) {
@@ -150,5 +168,7 @@ public class CreateContractActivity extends AppCompatActivity {
         btnSave.setEnabled(!loading);
     }
 
-    private void toast(String msg) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show(); }
+    private void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
 }

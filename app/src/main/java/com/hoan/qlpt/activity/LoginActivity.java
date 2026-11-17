@@ -14,11 +14,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hoan.qlpt.R;
+import com.hoan.qlpt.activity.admin.AdminMainActivity;
+import com.hoan.qlpt.activity.landlord.LandlordMainActivity;
+import com.hoan.qlpt.activity.tenant.TenantMainActivity;
 import com.hoan.qlpt.model.User;
 import com.hoan.qlpt.util.Role;
-import com.hoan.qlpt.activity.landlord.LandlordMainActivity;
-import com.hoan.qlpt.activity.admin.AdminMainActivity;
-import com.hoan.qlpt.activity.tenant.TenantMainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -50,7 +50,10 @@ public class LoginActivity extends AppCompatActivity {
 
         findViewById(R.id.tvForgot).setOnClickListener(v -> {
             String email = text(edtEmail);
-            if (email.isEmpty()) { toast("Nhập email vào ô Email trước"); return; }
+            if (email.isEmpty()) {
+                toast("Nhập email vào ô Email trước");
+                return;
+            }
             auth.sendPasswordResetEmail(email)
                     .addOnSuccessListener(x -> toast("Đã gửi email đặt lại mật khẩu (kiểm tra cả thư rác)"))
                     .addOnFailureListener(e -> toast("Không gửi được: " + e.getMessage()));

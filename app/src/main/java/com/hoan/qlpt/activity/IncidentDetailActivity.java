@@ -31,16 +31,25 @@ public class IncidentDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_incident_detail);
 
         String id = getIntent().getStringExtra("incidentId");
-        if (id == null) { finish(); return; }
+        if (id == null) {
+            finish();
+            return;
+        }
 
         db.collection("incidents").document(id).get()
                 .addOnSuccessListener(d -> {
                     incident = d.toObject(Incident.class);
-                    if (incident == null) { finish(); return; }
+                    if (incident == null) {
+                        finish();
+                        return;
+                    }
                     incident.setId(d.getId());
                     bind();
                 })
-                .addOnFailureListener(e -> { toast("Lỗi tải: " + e.getMessage()); finish(); });
+                .addOnFailureListener(e -> {
+                    toast("Lỗi tải: " + e.getMessage());
+                    finish();
+                });
 
         findViewById(R.id.btnProcessing).setOnClickListener(v -> update("processing"));
         findViewById(R.id.btnDone).setOnClickListener(v -> update("done"));
@@ -52,9 +61,14 @@ public class IncidentDetailActivity extends AppCompatActivity {
         TextView st = findViewById(R.id.tvStatus);
         st.setText(Incident.statusText(incident.getStatus()));
         switch (incident.getStatus()) {
-            case "done": st.setTextColor(0xFF2E7D32); break;
-            case "processing": st.setTextColor(0xFFFF9800); break;
-            default: st.setTextColor(0xFFE53935);
+            case "done":
+                st.setTextColor(0xFF2E7D32);
+                break;
+            case "processing":
+                st.setTextColor(0xFFFF9800);
+                break;
+            default:
+                st.setTextColor(0xFFE53935);
         }
 
         String date = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
@@ -103,5 +117,7 @@ public class IncidentDetailActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> toast("Lỗi: " + e.getMessage()));
     }
 
-    private void toast(String m) { Toast.makeText(this, m, Toast.LENGTH_LONG).show(); }
+    private void toast(String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
 }

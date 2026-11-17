@@ -76,7 +76,10 @@ public class CreateIncidentActivity extends AppCompatActivity {
                     boolean over = false;
                     for (Uri u : uris) {
                         if (selectedUris.contains(u)) continue; // bỏ ảnh trùng
-                        if (selectedUris.size() >= MAX_IMAGES) { over = true; break; }
+                        if (selectedUris.size() >= MAX_IMAGES) {
+                            over = true;
+                            break;
+                        }
                         selectedUris.add(u);
                     }
                     previewAdapter.notifyDataSetChanged();
@@ -102,7 +105,10 @@ public class CreateIncidentActivity extends AppCompatActivity {
     // Chỉ báo được khi có hợp đồng đang hiệu lực
     private void loadContract() {
         String uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
         db.collection("contracts")
                 .whereEqualTo("tenantId", uid)
                 .whereEqualTo("status", "active")
@@ -118,7 +124,10 @@ public class CreateIncidentActivity extends AppCompatActivity {
                             "Phòng: " + contract.getString("roomTitle"));
                     btnSubmit.setEnabled(true);
                 })
-                .addOnFailureListener(e -> { toast("Lỗi: " + e.getMessage()); finish(); });
+                .addOnFailureListener(e -> {
+                    toast("Lỗi: " + e.getMessage());
+                    finish();
+                });
     }
 
     private String text(TextInputEditText e) {
@@ -129,8 +138,14 @@ public class CreateIncidentActivity extends AppCompatActivity {
         String uid = FirebaseAuth.getInstance().getUid();
         if (uid == null || contract == null) return;
         String title = text(edtTitle), desc = text(edtDescription);
-        if (title.length() < 3) { toast("Nhập tiêu đề (ít nhất 3 ký tự)"); return; }
-        if (desc.length() < 10) { toast("Mô tả cần ít nhất 10 ký tự"); return; }
+        if (title.length() < 3) {
+            toast("Nhập tiêu đề (ít nhất 3 ký tự)");
+            return;
+        }
+        if (desc.length() < 10) {
+            toast("Mô tả cần ít nhất 10 ký tự");
+            return;
+        }
 
         setLoading(true);
         ImageUploader.uploadAll(this, new ArrayList<>(selectedUris),
@@ -173,17 +188,6 @@ public class CreateIncidentActivity extends AppCompatActivity {
                 });
     }
 
-    private interface UrlsCallback { void onDone(List<String> urls); }
-
-    private void uploadAll(List<Uri> pending, List<String> done, UrlsCallback cb) {
-        if (pending.isEmpty()) { cb.onDone(done); return; }
-        Uri next = pending.remove(0);
-        ImageUploader.upload(next, new ImageUploader.Callback() {
-            @Override public void onSuccess(String url) { done.add(url); uploadAll(pending, done, cb); }
-            @Override public void onError(String message) { setLoading(false); toast("Lỗi tải ảnh: " + message); }
-        });
-    }
-
     private void updateImageCount() {
         tvImageCount.setText(selectedUris.isEmpty() ? "Chưa chọn ảnh"
                 : "Đã chọn " + selectedUris.size() + "/" + MAX_IMAGES + " ảnh");
@@ -194,5 +198,7 @@ public class CreateIncidentActivity extends AppCompatActivity {
         btnSubmit.setEnabled(!loading);
     }
 
-    private void toast(String m) { Toast.makeText(this, m, Toast.LENGTH_LONG).show(); }
+    private void toast(String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
 }

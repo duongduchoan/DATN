@@ -1,5 +1,4 @@
 package com.hoan.qlpt.activity.landlord;
-import com.hoan.qlpt.util.MoneyTextWatcher;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.model.Contract;
 import com.hoan.qlpt.model.Invoice;
+import com.hoan.qlpt.util.MoneyTextWatcher;
 import com.hoan.qlpt.util.Notifier;
 
 import java.text.NumberFormat;
@@ -43,6 +43,7 @@ public class CreateInvoiceActivity extends AppCompatActivity {
     private ProgressBar progress;
     private final NumberFormat nf = NumberFormat.getInstance(new Locale("vi", "VN"));
     private com.google.firebase.firestore.DocumentSnapshot bank;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +72,18 @@ public class CreateInvoiceActivity extends AppCompatActivity {
         edtYear.setText(String.valueOf(now.get(Calendar.YEAR)));
 
         TextWatcher w = new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int a, int b, int c) {}
-            @Override public void onTextChanged(CharSequence s, int a, int b, int c) {}
-            @Override public void afterTextChanged(Editable s) { preview(); }
+            @Override
+            public void beforeTextChanged(CharSequence s, int a, int b, int c) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int a, int b, int c) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                preview();
+            }
         };
         for (TextInputEditText e : new TextInputEditText[]{edtElecOld, edtElecNew, edtElecPrice,
                 edtWaterOld, edtWaterNew, edtWaterPrice, edtOther}) {
@@ -81,10 +91,14 @@ public class CreateInvoiceActivity extends AppCompatActivity {
         }
 
         spContract.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override public void onItemSelected(AdapterView<?> p, View v, int pos, long id) {
+            @Override
+            public void onItemSelected(AdapterView<?> p, View v, int pos, long id) {
                 fillOldReadings(contracts.get(pos));
             }
-            @Override public void onNothingSelected(AdapterView<?> p) {}
+
+            @Override
+            public void onNothingSelected(AdapterView<?> p) {
+            }
         });
 
         btnSave.setOnClickListener(v -> save());
@@ -134,7 +148,8 @@ public class CreateInvoiceActivity extends AppCompatActivity {
                     Invoice latest = null;
                     for (DocumentSnapshot d : snap.getDocuments()) {
                         Invoice i = d.toObject(Invoice.class);
-                        if (i != null && (latest == null || i.getCreatedAt() > latest.getCreatedAt())) latest = i;
+                        if (i != null && (latest == null || i.getCreatedAt() > latest.getCreatedAt()))
+                            latest = i;
                     }
                     if (latest != null) {
                         edtElecOld.setText(String.valueOf(latest.getElecNew()));
@@ -172,7 +187,10 @@ public class CreateInvoiceActivity extends AppCompatActivity {
         Contract c = contracts.get(pos);
 
         int month = (int) num(edtMonth), year = (int) num(edtYear);
-        if (month < 1 || month > 12 || year < 2000) { toast("Tháng hoặc năm không hợp lệ"); return; }
+        if (month < 1 || month > 12 || year < 2000) {
+            toast("Tháng hoặc năm không hợp lệ");
+            return;
+        }
         if (num(edtElecNew) < num(edtElecOld) || num(edtWaterNew) < num(edtWaterOld)) {
             toast("Số mới không được nhỏ hơn số cũ");
             return;
@@ -235,9 +253,15 @@ public class CreateInvoiceActivity extends AppCompatActivity {
                                 toast("Đã tạo hóa đơn");
                                 finish();
                             })
-                            .addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); });
+                            .addOnFailureListener(e -> {
+                                setLoading(false);
+                                toast("Lỗi: " + e.getMessage());
+                            });
                 })
-                .addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); });
+                .addOnFailureListener(e -> {
+                    setLoading(false);
+                    toast("Lỗi: " + e.getMessage());
+                });
     }
 
     private void setLoading(boolean loading) {
@@ -245,5 +269,7 @@ public class CreateInvoiceActivity extends AppCompatActivity {
         btnSave.setEnabled(!loading);
     }
 
-    private void toast(String msg) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show(); }
+    private void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
 }

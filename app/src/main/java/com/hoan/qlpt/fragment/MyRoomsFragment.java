@@ -1,5 +1,4 @@
 package com.hoan.qlpt.fragment;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,34 +6,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.activity.landlord.AddRoomActivity;
 import com.hoan.qlpt.adapter.RoomAdapter;
-import com.hoan.qlpt.model.Room;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.List;
-import android.content.Intent;
-import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.WriteBatch;
 import com.hoan.qlpt.model.Contract;
+import com.hoan.qlpt.model.Room;
+import com.hoan.qlpt.util.EmptyState;
 import com.hoan.qlpt.util.Notifier;
+
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class MyRoomsFragment extends Fragment {
@@ -139,6 +136,7 @@ public class MyRoomsFragment extends Fragment {
             loadRooms();
         }
     }
+
     private void showActions(Room r) {
         List<String> labels = new ArrayList<>();
         List<Runnable> actions = new ArrayList<>();
@@ -204,6 +202,7 @@ public class MyRoomsFragment extends Fragment {
                             "Lỗi: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
     }
+
     private void showContract(Room r) {
         String uid = FirebaseAuth.getInstance().getUid();
         if (uid == null) return;

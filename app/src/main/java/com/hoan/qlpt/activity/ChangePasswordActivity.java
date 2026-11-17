@@ -43,18 +43,36 @@ public class ChangePasswordActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null || user.getEmail() == null) return;
 
-        if (cur.isEmpty()) { toast("Nhập mật khẩu hiện tại"); return; }
-        if (nw.length() < 6) { toast("Mật khẩu mới phải có ít nhất 6 ký tự"); return; }
-        if (!nw.equals(cf)) { toast("Mật khẩu nhập lại không khớp"); return; }
-        if (nw.equals(cur)) { toast("Mật khẩu mới phải khác mật khẩu hiện tại"); return; }
+        if (cur.isEmpty()) {
+            toast("Nhập mật khẩu hiện tại");
+            return;
+        }
+        if (nw.length() < 6) {
+            toast("Mật khẩu mới phải có ít nhất 6 ký tự");
+            return;
+        }
+        if (!nw.equals(cf)) {
+            toast("Mật khẩu nhập lại không khớp");
+            return;
+        }
+        if (nw.equals(cur)) {
+            toast("Mật khẩu mới phải khác mật khẩu hiện tại");
+            return;
+        }
 
         setLoading(true);
         // Xác thực lại bằng mật khẩu hiện tại rồi mới được đổi
         AuthCredential cred = EmailAuthProvider.getCredential(user.getEmail(), cur);
         user.reauthenticate(cred)
                 .addOnSuccessListener(r -> user.updatePassword(nw)
-                        .addOnSuccessListener(v -> { toast("Đã đổi mật khẩu"); finish(); })
-                        .addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); }))
+                        .addOnSuccessListener(v -> {
+                            toast("Đã đổi mật khẩu");
+                            finish();
+                        })
+                        .addOnFailureListener(e -> {
+                            setLoading(false);
+                            toast("Lỗi: " + e.getMessage());
+                        }))
                 .addOnFailureListener(e -> {
                     setLoading(false);
                     toast(e instanceof FirebaseAuthInvalidCredentialsException
@@ -67,5 +85,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         btnSave.setEnabled(!loading);
     }
 
-    private void toast(String m) { Toast.makeText(this, m, Toast.LENGTH_LONG).show(); }
+    private void toast(String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
 }

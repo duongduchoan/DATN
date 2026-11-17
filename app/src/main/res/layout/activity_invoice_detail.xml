@@ -12,9 +12,28 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView android:id="@+id/tvTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="#009688" android:textSize="22sp" android:textStyle="bold" />
-        <TextView android:id="@+id/tvStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:textStyle="bold" />
-        <TextView android:id="@+id/tvMethod" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:textColor="#666666" android:visibility="gone" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#009688"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="#666666"
+            android:visibility="gone" />
 
         <!-- Thẻ biên lai -->
         <com.google.android.material.card.MaterialCardView
@@ -31,36 +50,135 @@
                 android:padding="16dp">
 
                 <!-- Tiền phòng -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Tiền phòng" android:textStyle="bold" />
-                    <TextView android:id="@+id/tvRoomFeeAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="end" android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tiền phòng"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvRoomFeeAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <!-- Tiền điện -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:orientation="horizontal">
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tiền điện" android:textStyle="bold" />
-                        <TextView android:id="@+id/tvElecDetail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:textColor="#666666" android:textSize="13sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tiền điện"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvElecDetail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:textColor="#666666"
+                            android:textSize="13sp" />
                     </LinearLayout>
-                    <TextView android:id="@+id/tvElecAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:gravity="end" android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvElecAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:gravity="end"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <!-- Tiền nước -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:orientation="horizontal">
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tiền nước" android:textStyle="bold" />
-                        <TextView android:id="@+id/tvWaterDetail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:textColor="#666666" android:textSize="13sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tiền nước"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvWaterDetail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:textColor="#666666"
+                            android:textSize="13sp" />
                     </LinearLayout>
-                    <TextView android:id="@+id/tvWaterAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:gravity="end" android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvWaterAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:gravity="end"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <!-- Phí khác -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:orientation="horizontal">
-                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Phí khác" android:textStyle="bold" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="Rác, wifi, dịch vụ" android:textColor="#666666" android:textSize="13sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Phí khác"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Rác, wifi, dịch vụ"
+                            android:textColor="#666666"
+                            android:textSize="13sp" />
                     </LinearLayout>
-                    <TextView android:id="@+id/tvOtherAmount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:gravity="end" android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvOtherAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:gravity="end"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <!-- Kẻ đứt nét -->
@@ -73,12 +191,37 @@
                     android:layerType="software" />
 
                 <!-- Tổng cộng -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="TỔNG CỘNG" android:textSize="15sp" android:textStyle="bold" />
-                    <TextView android:id="@+id/tvTotal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="end" android:textColor="#FF9800" android:textSize="22sp" android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TỔNG CỘNG"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:textColor="#FF9800"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
-                <TextView android:id="@+id/tvDue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:textColor="#666666" android:textSize="13sp" />
+                <TextView
+                    android:id="@+id/tvDue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#666666"
+                    android:textSize="13sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -91,15 +234,29 @@
             android:orientation="vertical"
             android:visibility="gone">
 
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chọn hình thức thanh toán" android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chọn hình thức thanh toán"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/rgMethod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <RadioButton android:id="@+id/rbTransfer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chuyển khoản (quét mã QR)" />
-                <RadioButton android:id="@+id/rbCash" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tiền mặt (đưa trực tiếp cho chủ trọ)" />
+
+                <RadioButton
+                    android:id="@+id/rbTransfer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chuyển khoản (quét mã QR)" />
+
+                <RadioButton
+                    android:id="@+id/rbCash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiền mặt (đưa trực tiếp cho chủ trọ)" />
             </RadioGroup>
 
             <LinearLayout
@@ -110,9 +267,26 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <ImageView android:id="@+id/imgQr" android:layout_width="260dp" android:layout_height="260dp" android:background="#FFFFFF" android:scaleType="fitCenter" />
-                <TextView android:id="@+id/tvBank" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:gravity="center" />
-                <Button android:id="@+id/btnCopy" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sao chép nội dung chuyển khoản" />
+                <ImageView
+                    android:id="@+id/imgQr"
+                    android:layout_width="260dp"
+                    android:layout_height="260dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:id="@+id/tvBank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/btnCopy"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sao chép nội dung chuyển khoản" />
             </LinearLayout>
 
             <TextView
@@ -123,7 +297,12 @@
                 android:text="Bạn đưa tiền mặt trực tiếp cho chủ trọ, rồi bấm nút bên dưới để chủ trọ xác nhận."
                 android:textColor="#444444" />
 
-            <Button android:id="@+id/btnPaid" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="16dp" android:backgroundTint="#009688" />
+            <Button
+                android:id="@+id/btnPaid"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#009688" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

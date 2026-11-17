@@ -52,6 +52,7 @@
                         android:background="@drawable/bg_camera_badge"
                         android:clickable="true"
                         android:focusable="true">
+
                         <ImageView
                             android:layout_width="12dp"
                             android:layout_height="12dp"
@@ -126,6 +127,7 @@
             app:cardElevation="0dp"
             app:strokeColor="#E5E7EB"
             app:strokeWidth="1dp">
+
             <LinearLayout
                 android:id="@+id/llAccount"
                 android:layout_width="match_parent"
@@ -156,6 +158,7 @@
             app:cardElevation="0dp"
             app:strokeColor="#E5E7EB"
             app:strokeWidth="1dp">
+
             <LinearLayout
                 android:id="@+id/llWork"
                 android:layout_width="match_parent"

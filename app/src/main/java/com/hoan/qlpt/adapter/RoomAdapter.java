@@ -15,29 +15,34 @@ import com.hoan.qlpt.model.Room;
 import com.hoan.qlpt.util.Amenities;
 import com.hoan.qlpt.util.ImageUrl;
 
-import java.util.ArrayList;
-
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.VH> {
 
-    public interface OnRoomClick { void onClick(Room room); }
+    public interface OnRoomClick {
+        void onClick(Room room);
+    }
 
     private final List<Room> rooms;
     private final boolean guestMode; // true: người thuê xem (hiện địa chỉ); false: chủ trọ (hiện trạng thái duyệt)
     private OnRoomClick onRoomClick;
     private final NumberFormat nf = NumberFormat.getInstance(new Locale("vi", "VN"));
 
-    public RoomAdapter(List<Room> rooms) { this(rooms, false); }
+    public RoomAdapter(List<Room> rooms) {
+        this(rooms, false);
+    }
 
     public RoomAdapter(List<Room> rooms, boolean guestMode) {
         this.rooms = rooms;
         this.guestMode = guestMode;
     }
 
-    public void setOnRoomClick(OnRoomClick l) { this.onRoomClick = l; }
+    public void setOnRoomClick(OnRoomClick l) {
+        this.onRoomClick = l;
+    }
 
     @NonNull
     @Override
@@ -97,9 +102,14 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.VH> {
     private String statusText(Room r) {
         String s;
         switch (r.getStatus()) {
-            case "approved": s = "Đã duyệt"; break;
-            case "rejected": s = "Bị từ chối"; break;
-            default: s = "Chờ duyệt";
+            case "approved":
+                s = "Đã duyệt";
+                break;
+            case "rejected":
+                s = "Bị từ chối";
+                break;
+            default:
+                s = "Chờ duyệt";
         }
         String text = s + " • " + ("rented".equals(r.getRentStatus()) ? "Đã thuê" : "Còn trống")
                 + (r.isHidden() ? " • Đang ẩn" : "");
@@ -111,11 +121,14 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.VH> {
     }
 
     @Override
-    public int getItemCount() { return rooms.size(); }
+    public int getItemCount() {
+        return rooms.size();
+    }
 
     static class VH extends RecyclerView.ViewHolder {
         ImageView img;
         TextView tvTitle, tvPrice, tvInfo, tvTags, tvStatus, tvVerified;
+
         VH(View v) {
             super(v);
             img = v.findViewById(R.id.imgRoom);

@@ -1,5 +1,4 @@
 package com.hoan.qlpt.fragment;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,13 +19,14 @@ import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.ApprovalAdapter;
 import com.hoan.qlpt.model.ApprovalItem;
 import com.hoan.qlpt.model.House;
+import com.hoan.qlpt.util.EmptyState;
 import com.hoan.qlpt.util.Notifier;
+import com.hoan.qlpt.util.ReasonDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.hoan.qlpt.util.ReasonDialog;
 
 public class ApproveHousesFragment extends Fragment {
 
@@ -50,8 +50,13 @@ public class ApproveHousesFragment extends Fragment {
         EmptyState.set(tvEmpty, "✅", "Không có nhà trọ nào chờ duyệt", "Mọi nhà trọ đã được xử lý");
 
         adapter = new ApprovalAdapter(items, new ApprovalAdapter.Listener() {
-            @Override public void onApprove(ApprovalItem it) { update(it, "approved", ""); }
-            @Override public void onReject(ApprovalItem it) {
+            @Override
+            public void onApprove(ApprovalItem it) {
+                update(it, "approved", "");
+            }
+
+            @Override
+            public void onReject(ApprovalItem it) {
                 ReasonDialog.show(requireContext(), "Từ chối nhà trọ: " + it.title,
                         reason -> update(it, "rejected", reason));
             }
@@ -64,7 +69,8 @@ public class ApproveHousesFragment extends Fragment {
     private void load() {
         db.collection("profiles").get().addOnSuccessListener(ps -> {
             Map<String, String> names = new HashMap<>();
-            for (DocumentSnapshot d : ps.getDocuments()) names.put(d.getId(), d.getString("fullName"));
+            for (DocumentSnapshot d : ps.getDocuments())
+                names.put(d.getId(), d.getString("fullName"));
 
             db.collection("houses").whereEqualTo("status", "pending").get()
                     .addOnSuccessListener(hs -> {

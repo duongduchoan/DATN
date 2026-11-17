@@ -1,34 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-
     <!-- App Theme Colors -->
     <color name="colorPrimary">#1976D2</color>
     <color name="colorPrimaryDark">#1565C0</color>
-    <color name="colorPrimaryLight">#BBDEFB</color>
     <color name="colorAccent">#FF6F00</color>
-    <color name="colorAccentLight">#FFE082</color>
-
-    <!-- Text Colors -->
-    <color name="colorTextPrimary">#212121</color>
-    <color name="colorTextSecondary">#757575</color>
-    <color name="colorTextHint">#BDBDBD</color>
-
-    <!-- Status Colors -->
-    <color name="colorSuccess">#4CAF50</color>
-    <color name="colorWarning">#FF9800</color>
-    <color name="colorDanger">#F44336</color>
-    <color name="colorInfo">#2196F3</color>
-
-    <!-- Background -->
-    <color name="colorBackground">#F5F5F5</color>
-    <color name="colorSurface">#FFFFFF</color>
-    <color name="colorDivider">#E0E0E0</color>
-
-    <!-- Role Colors -->
-    <color name="colorTenant">#4CAF50</color>
-    <color name="colorLandlord">#FF9800</color>
-    <color name="colorAdmin">#F44336</color>
-    <color name="colorGuest">#9E9E9E</color>
 </resources>

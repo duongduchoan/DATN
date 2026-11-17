@@ -85,7 +85,10 @@ public class AddRoomActivity extends AppCompatActivity {
                     boolean over = false;
                     for (Uri u : uris) {
                         if (selectedUris.contains(u)) continue;
-                        if (selectedUris.size() >= MAX_IMAGES) { over = true; break; }
+                        if (selectedUris.size() >= MAX_IMAGES) {
+                            over = true;
+                            break;
+                        }
                         selectedUris.add(u);
                     }
                     previewAdapter.notifyDataSetChanged();
@@ -163,10 +166,19 @@ public class AddRoomActivity extends AppCompatActivity {
             toast("Diện tích không hợp lệ");
             return;
         }
-        if (roomNumber.isEmpty()) { toast("Nhập số phòng"); return; }
-        if (price <= 0 || area <= 0) { toast("Giá và diện tích phải lớn hơn 0"); return; }
+        if (roomNumber.isEmpty()) {
+            toast("Nhập số phòng");
+            return;
+        }
+        if (price <= 0 || area <= 0) {
+            toast("Giá và diện tích phải lớn hơn 0");
+            return;
+        }
         String err = form.validate();
-        if (err != null) { toast(err); return; }
+        if (err != null) {
+            toast(err);
+            return;
+        }
 
         Room room = new Room();
         room.setLandlordId(uid);
@@ -213,5 +225,7 @@ public class AddRoomActivity extends AppCompatActivity {
         btnSave.setEnabled(!loading);
     }
 
-    private void toast(String msg) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show(); }
+    private void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
 }

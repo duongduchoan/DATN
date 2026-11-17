@@ -75,7 +75,10 @@ public class RequestLandlordActivity extends AppCompatActivity {
                     boolean over = false;
                     for (Uri u : uris) {
                         if (selectedUris.contains(u)) continue; // bỏ ảnh trùng
-                        if (selectedUris.size() >= MAX_IMAGES) { over = true; break; }
+                        if (selectedUris.size() >= MAX_IMAGES) {
+                            over = true;
+                            break;
+                        }
                         selectedUris.add(u);
                     }
                     previewAdapter.notifyDataSetChanged();
@@ -95,7 +98,10 @@ public class RequestLandlordActivity extends AppCompatActivity {
 
         // Điền sẵn từ hồ sơ
         String uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
         db.collection("profiles").document(uid).get().addOnSuccessListener(p -> {
             edtName.setText(p.getString("fullName"));
             edtPhone.setText(p.getString("phone"));
@@ -115,9 +121,18 @@ public class RequestLandlordActivity extends AppCompatActivity {
         String name = text(edtName), phone = text(edtPhone), cccd = text(edtCccd);
         String address = text(edtHouseAddress), desc = text(edtDescription);
 
-        if (name.isEmpty()) { toast("Nhập họ tên"); return; }
-        if (!phone.matches("0\\d{9,10}")) { toast("Số điện thoại không hợp lệ"); return; }
-        if (!cccd.matches("\\d{9}|\\d{12}")) { toast("CCCD phải gồm 9 hoặc 12 số"); return; }
+        if (name.isEmpty()) {
+            toast("Nhập họ tên");
+            return;
+        }
+        if (!phone.matches("0\\d{9,10}")) {
+            toast("Số điện thoại không hợp lệ");
+            return;
+        }
+        if (!cccd.matches("\\d{9}|\\d{12}")) {
+            toast("CCCD phải gồm 9 hoặc 12 số");
+            return;
+        }
 
         int houses, rooms;
         try {
@@ -127,11 +142,26 @@ public class RequestLandlordActivity extends AppCompatActivity {
             toast("Nhập số nhà trọ và tổng số phòng");
             return;
         }
-        if (houses < 1 || rooms < 1) { toast("Số nhà trọ và số phòng phải từ 1 trở lên"); return; }
-        if (address.isEmpty()) { toast("Nhập địa chỉ nhà trọ chính"); return; }
-        if (desc.length() < 20) { toast("Phần giới thiệu cần ít nhất 20 ký tự"); return; }
-        if (selectedUris.isEmpty()) { toast("Chọn ít nhất 1 ảnh"); return; }
-        if (!cbConfirm.isChecked()) { toast("Bạn cần tích vào ô cam kết"); return; }
+        if (houses < 1 || rooms < 1) {
+            toast("Số nhà trọ và số phòng phải từ 1 trở lên");
+            return;
+        }
+        if (address.isEmpty()) {
+            toast("Nhập địa chỉ nhà trọ chính");
+            return;
+        }
+        if (desc.length() < 20) {
+            toast("Phần giới thiệu cần ít nhất 20 ký tự");
+            return;
+        }
+        if (selectedUris.isEmpty()) {
+            toast("Chọn ít nhất 1 ảnh");
+            return;
+        }
+        if (!cbConfirm.isChecked()) {
+            toast("Bạn cần tích vào ô cam kết");
+            return;
+        }
 
         setLoading(true);
         // Chặn gửi trùng khi đang có yêu cầu chờ duyệt
@@ -179,18 +209,10 @@ public class RequestLandlordActivity extends AppCompatActivity {
                                 toast("Lỗi tải ảnh: " + msg);
                             });
                 })
-                .addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); });
-    }
-
-    private interface UrlsCallback { void onDone(List<String> urls); }
-
-    private void uploadAll(List<Uri> pending, List<String> done, UrlsCallback cb) {
-        if (pending.isEmpty()) { cb.onDone(done); return; }
-        Uri next = pending.remove(0);
-        ImageUploader.upload(next, new ImageUploader.Callback() {
-            @Override public void onSuccess(String url) { done.add(url); uploadAll(pending, done, cb); }
-            @Override public void onError(String message) { setLoading(false); toast("Lỗi tải ảnh: " + message); }
-        });
+                .addOnFailureListener(e -> {
+                    setLoading(false);
+                    toast("Lỗi: " + e.getMessage());
+                });
     }
 
     private void updateImageCount() {
@@ -203,5 +225,7 @@ public class RequestLandlordActivity extends AppCompatActivity {
         btnSubmit.setEnabled(!loading);
     }
 
-    private void toast(String msg) { Toast.makeText(this, msg, Toast.LENGTH_LONG).show(); }
+    private void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
 }

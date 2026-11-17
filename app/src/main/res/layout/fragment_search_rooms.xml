@@ -34,6 +34,7 @@
             app:boxCornerRadiusBottomStart="12dp"
             app:boxCornerRadiusTopEnd="12dp"
             app:boxCornerRadiusTopStart="12dp">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtSearch"
                 android:layout_width="match_parent"
@@ -57,16 +58,42 @@
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:scrollbars="none">
+
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroupPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:selectionRequired="true"
             app:singleSelection="true">
-            <com.google.android.material.chip.Chip android:id="@+id/chipAll" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="Tất cả giá" />
-            <com.google.android.material.chip.Chip android:id="@+id/chipP1" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dưới 2 triệu" />
-            <com.google.android.material.chip.Chip android:id="@+id/chipP2" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 - 4 triệu" />
-            <com.google.android.material.chip.Chip android:id="@+id/chipP3" style="@style/Widget.MaterialComponents.Chip.Choice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Trên 4 triệu" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAll"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Tất cả giá" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipP1"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dưới 2 triệu" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipP2"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 - 4 triệu" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipP3"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trên 4 triệu" />
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 

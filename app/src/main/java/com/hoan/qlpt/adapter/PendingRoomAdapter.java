@@ -22,6 +22,7 @@ public class PendingRoomAdapter extends RecyclerView.Adapter<PendingRoomAdapter.
 
     public interface Listener {
         void onApprove(Room room);
+
         void onReject(Room room);
     }
 
@@ -59,12 +60,15 @@ public class PendingRoomAdapter extends RecyclerView.Adapter<PendingRoomAdapter.
     }
 
     @Override
-    public int getItemCount() { return rooms.size(); }
+    public int getItemCount() {
+        return rooms.size();
+    }
 
     static class VH extends RecyclerView.ViewHolder {
         ImageView img;
         TextView tvTitle, tvPrice, tvInfo;
         Button btnApprove, btnReject;
+
         VH(View v) {
             super(v);
             img = v.findViewById(R.id.imgRoom);

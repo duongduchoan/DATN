@@ -1,5 +1,4 @@
 package com.hoan.qlpt.activity.landlord;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -20,6 +19,7 @@ import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.ApprovalAdapter;
 import com.hoan.qlpt.model.ApprovalItem;
 import com.hoan.qlpt.model.Contract;
+import com.hoan.qlpt.util.EmptyState;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -48,8 +48,13 @@ public class TenantsActivity extends AppCompatActivity {
         EmptyState.set(tvEmpty, "👥", "Chưa có người thuê nào", "Người đang thuê phòng của bạn sẽ hiện ở đây");
 
         adapter = new ApprovalAdapter(items, new ApprovalAdapter.Listener() {
-            @Override public void onApprove(ApprovalItem it) {}
-            @Override public void onReject(ApprovalItem it) {}
+            @Override
+            public void onApprove(ApprovalItem it) {
+            }
+
+            @Override
+            public void onReject(ApprovalItem it) {
+            }
         });
         adapter.setShowActions(false);
         adapter.setOnItemClick(this::onItemClick);
@@ -67,7 +72,10 @@ public class TenantsActivity extends AppCompatActivity {
 
     private void load() {
         String uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
         db.collection("contracts")
                 .whereEqualTo("landlordId", uid)
                 .whereEqualTo("status", "active")

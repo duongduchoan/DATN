@@ -1,4 +1,3 @@
-
 package com.hoan.qlpt.activity.admin;
 
 import android.os.Bundle;
@@ -7,12 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import com.hoan.qlpt.R;
-import com.hoan.qlpt.fragment.ProfileFragment;
 import com.hoan.qlpt.fragment.AdminApproveFragment;
-import com.hoan.qlpt.fragment.AdminUsersFragment;
 import com.hoan.qlpt.fragment.AdminOverviewFragment;
+import com.hoan.qlpt.fragment.AdminUsersFragment;
+import com.hoan.qlpt.fragment.ProfileFragment;
 
 public class AdminMainActivity extends AppCompatActivity {
 

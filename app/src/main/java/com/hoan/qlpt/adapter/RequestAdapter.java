@@ -20,8 +20,20 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.VH> {
 
     public interface Listener {
         void onApprove(RentalRequest r);
+
         void onReject(RentalRequest r);
+
         void onCreateContract(RentalRequest r);
+    }
+
+    public interface OnItemClick {
+        void onClick(RentalRequest r);
+    }
+
+    private OnItemClick onItemClick;
+
+    public void setOnItemClick(OnItemClick l) {
+        onItemClick = l;
     }
 
     private final List<RentalRequest> items;
@@ -81,17 +93,23 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.VH> {
             h.tvResult.setTextColor(0xFFE53935);
         }
 
+        h.itemView.setOnClickListener(v -> {
+            if (onItemClick != null) onItemClick.onClick(r);
+        });
         h.btnApprove.setOnClickListener(v -> listener.onApprove(r));
         h.btnReject.setOnClickListener(v -> listener.onReject(r));
         h.btnContract.setOnClickListener(v -> listener.onCreateContract(r));
     }
 
     @Override
-    public int getItemCount() { return items.size(); }
+    public int getItemCount() {
+        return items.size();
+    }
 
     static class VH extends RecyclerView.ViewHolder {
         TextView tvRoom, tvTenant, tvVisit, tvMessage, tvDate, tvResult;
         View layoutActions, btnApprove, btnReject, btnContract;
+
         VH(View v) {
             super(v);
             tvRoom = v.findViewById(R.id.tvRoom);

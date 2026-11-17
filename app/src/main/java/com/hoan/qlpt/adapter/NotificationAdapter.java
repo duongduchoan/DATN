@@ -20,7 +20,9 @@ import java.util.Locale;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.VH> {
 
-    public interface OnClick { void onClick(AppNotification n); }
+    public interface OnClick {
+        void onClick(AppNotification n);
+    }
 
     private final List<AppNotification> items;
     private final OnClick onClick;
@@ -52,10 +54,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     @Override
-    public int getItemCount() { return items.size(); }
+    public int getItemCount() {
+        return items.size();
+    }
 
     static class VH extends RecyclerView.ViewHolder {
         TextView tvDot, tvTitle, tvBody, tvTime;
+
         VH(View v) {
             super(v);
             tvDot = v.findViewById(R.id.tvDot);

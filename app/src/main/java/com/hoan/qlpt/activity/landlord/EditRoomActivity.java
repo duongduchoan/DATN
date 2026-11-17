@@ -33,7 +33,10 @@ public class EditRoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_room);
 
         roomId = getIntent().getStringExtra("roomId");
-        if (roomId == null) { finish(); return; }
+        if (roomId == null) {
+            finish();
+            return;
+        }
 
         edtPrice = findViewById(R.id.edtPrice);
         edtArea = findViewById(R.id.edtArea);
@@ -48,14 +51,20 @@ public class EditRoomActivity extends AppCompatActivity {
         db.collection("rooms").document(roomId).get()
                 .addOnSuccessListener(d -> {
                     Room r = d.toObject(Room.class);
-                    if (r == null) { finish(); return; }
+                    if (r == null) {
+                        finish();
+                        return;
+                    }
                     ((TextView) findViewById(R.id.tvRoomTitle)).setText(r.getTitle());
                     edtPrice.setText(String.valueOf(r.getPrice()));
                     edtArea.setText(String.valueOf(r.getArea()));
                     edtDescription.setText(r.getDescription());
                     form.fill(r);
                 })
-                .addOnFailureListener(e -> { toast("Lỗi tải: " + e.getMessage()); finish(); });
+                .addOnFailureListener(e -> {
+                    toast("Lỗi tải: " + e.getMessage());
+                    finish();
+                });
 
         btnSave.setOnClickListener(v -> save());
     }
@@ -73,9 +82,15 @@ public class EditRoomActivity extends AppCompatActivity {
             toast("Diện tích không hợp lệ");
             return;
         }
-        if (price <= 0 || area <= 0) { toast("Giá và diện tích phải lớn hơn 0"); return; }
+        if (price <= 0 || area <= 0) {
+            toast("Giá và diện tích phải lớn hơn 0");
+            return;
+        }
         String err = form.validate();
-        if (err != null) { toast(err); return; }
+        if (err != null) {
+            toast(err);
+            return;
+        }
 
         Map<String, Object> m = form.toMap();
         m.put("price", price);
@@ -84,8 +99,14 @@ public class EditRoomActivity extends AppCompatActivity {
 
         setLoading(true);
         db.collection("rooms").document(roomId).update(m)
-                .addOnSuccessListener(v -> { toast("Đã lưu thay đổi"); finish(); })
-                .addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); });
+                .addOnSuccessListener(v -> {
+                    toast("Đã lưu thay đổi");
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    setLoading(false);
+                    toast("Lỗi: " + e.getMessage());
+                });
     }
 
     private void setLoading(boolean loading) {
@@ -93,5 +114,7 @@ public class EditRoomActivity extends AppCompatActivity {
         btnSave.setEnabled(!loading);
     }
 
-    private void toast(String m) { Toast.makeText(this, m, Toast.LENGTH_LONG).show(); }
+    private void toast(String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
 }

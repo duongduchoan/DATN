@@ -47,7 +47,10 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
 
         imgAvatar = findViewById(R.id.imgAvatar);
         edtName = findViewById(R.id.edtName);
@@ -83,8 +86,14 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void save() {
         String name = text(edtName), phone = text(edtPhone);
-        if (name.isEmpty()) { toast("Nhập họ và tên"); return; }
-        if (!phone.matches("0\\d{9,10}")) { toast("Số điện thoại không hợp lệ"); return; }
+        if (name.isEmpty()) {
+            toast("Nhập họ và tên");
+            return;
+        }
+        if (!phone.matches("0\\d{9,10}")) {
+            toast("Số điện thoại không hợp lệ");
+            return;
+        }
 
         setLoading(true);
         if (newAvatar == null) {
@@ -92,7 +101,10 @@ public class EditProfileActivity extends AppCompatActivity {
         } else {
             ImageUploader.uploadAll(this, java.util.Collections.singletonList(newAvatar), null,
                     urls -> write(name, phone, urls.get(0)),
-                    msg -> { setLoading(false); toast("Lỗi tải ảnh: " + msg); });
+                    msg -> {
+                        setLoading(false);
+                        toast("Lỗi tải ảnh: " + msg);
+                    });
         }
     }
 
@@ -102,8 +114,14 @@ public class EditProfileActivity extends AppCompatActivity {
         m.put("phone", phone);
         m.put("avatarUrl", avatarUrl);
         db.collection("profiles").document(uid).update(m)
-                .addOnSuccessListener(v -> { toast("Đã lưu hồ sơ"); finish(); })
-                .addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); });
+                .addOnSuccessListener(v -> {
+                    toast("Đã lưu hồ sơ");
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    setLoading(false);
+                    toast("Lỗi: " + e.getMessage());
+                });
     }
 
     private void setLoading(boolean loading) {
@@ -111,5 +129,7 @@ public class EditProfileActivity extends AppCompatActivity {
         btnSave.setEnabled(!loading);
     }
 
-    private void toast(String m) { Toast.makeText(this, m, Toast.LENGTH_LONG).show(); }
+    private void toast(String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
 }

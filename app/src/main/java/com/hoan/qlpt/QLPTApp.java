@@ -1,4 +1,3 @@
-
 package com.hoan.qlpt;
 
 import android.app.Application;

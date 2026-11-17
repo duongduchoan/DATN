@@ -1,6 +1,4 @@
-
 package com.hoan.qlpt.fragment;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.UserAdapter;
 import com.hoan.qlpt.model.User;
+import com.hoan.qlpt.util.EmptyState;
 import com.hoan.qlpt.util.Role;
 
 import java.util.ArrayList;

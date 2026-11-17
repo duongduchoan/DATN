@@ -15,8 +15,8 @@ import com.google.firebase.firestore.WriteBatch;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.ImageSliderAdapter;
 import com.hoan.qlpt.model.RoleRequest;
-import com.hoan.qlpt.util.Role;
 import com.hoan.qlpt.util.Notifier;
+import com.hoan.qlpt.util.Role;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,16 +35,25 @@ public class RoleRequestDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_role_request_detail);
 
         String id = getIntent().getStringExtra("requestId");
-        if (id == null) { finish(); return; }
+        if (id == null) {
+            finish();
+            return;
+        }
 
         db.collection("roleRequests").document(id).get()
                 .addOnSuccessListener(d -> {
                     req = d.toObject(RoleRequest.class);
-                    if (req == null) { finish(); return; }
+                    if (req == null) {
+                        finish();
+                        return;
+                    }
                     req.setId(d.getId());
                     bind();
                 })
-                .addOnFailureListener(e -> { toast("Lỗi tải: " + e.getMessage()); finish(); });
+                .addOnFailureListener(e -> {
+                    toast("Lỗi tải: " + e.getMessage());
+                    finish();
+                });
 
         findViewById(R.id.btnApprove).setOnClickListener(v -> confirmApprove());
         findViewById(R.id.btnReject).setOnClickListener(v -> askReason());
@@ -53,9 +62,17 @@ public class RoleRequestDetailActivity extends AppCompatActivity {
     private void bind() {
         TextView st = findViewById(R.id.tvStatus);
         switch (req.getStatus()) {
-            case "approved": st.setText("Đã duyệt"); st.setTextColor(0xFF2E7D32); break;
-            case "rejected": st.setText("Đã từ chối"); st.setTextColor(0xFFE53935); break;
-            default: st.setText("Chờ duyệt"); st.setTextColor(0xFFFF9800);
+            case "approved":
+                st.setText("Đã duyệt");
+                st.setTextColor(0xFF2E7D32);
+                break;
+            case "rejected":
+                st.setText("Đã từ chối");
+                st.setTextColor(0xFFE53935);
+                break;
+            default:
+                st.setText("Chờ duyệt");
+                st.setTextColor(0xFFFF9800);
         }
 
         String date = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
@@ -110,7 +127,10 @@ public class RoleRequestDetailActivity extends AppCompatActivity {
         // Ghi đè nút để không tự đóng khi chưa nhập lý do
         dlg.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
             String reason = edt.getText().toString().trim();
-            if (reason.length() < 5) { toast("Hãy nhập lý do (ít nhất 5 ký tự)"); return; }
+            if (reason.length() < 5) {
+                toast("Hãy nhập lý do (ít nhất 5 ký tự)");
+                return;
+            }
             WriteBatch b = db.batch();
             b.update(db.collection("roleRequests").document(req.getId()),
                     "status", "rejected", "rejectReason", reason);
@@ -129,5 +149,7 @@ public class RoleRequestDetailActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> toast("Lỗi: " + e.getMessage()));
     }
 
-    private void toast(String m) { Toast.makeText(this, m, Toast.LENGTH_LONG).show(); }
+    private void toast(String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
 }

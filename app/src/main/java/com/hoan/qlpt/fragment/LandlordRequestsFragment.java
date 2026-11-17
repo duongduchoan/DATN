@@ -1,6 +1,6 @@
 package com.hoan.qlpt.fragment;
-import com.hoan.qlpt.util.EmptyState;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.RequestAdapter;
 import com.hoan.qlpt.model.RentalRequest;
+import com.hoan.qlpt.util.EmptyState;
 import com.hoan.qlpt.util.Notifier;
 
 import java.util.ArrayList;
@@ -47,9 +48,18 @@ public class LandlordRequestsFragment extends Fragment {
         EmptyState.set(tvEmpty, "📭", "Chưa có yêu cầu thuê nào", "Khi có người quan tâm, yêu cầu sẽ hiện ở đây");
 
         adapter = new RequestAdapter(items, new RequestAdapter.Listener() {
-            @Override public void onApprove(RentalRequest r) { update(r, "approved"); }
-            @Override public void onReject(RentalRequest r) { update(r, "rejected"); }
-            @Override public void onCreateContract(RentalRequest r) {
+            @Override
+            public void onApprove(RentalRequest r) {
+                update(r, "approved");
+            }
+
+            @Override
+            public void onReject(RentalRequest r) {
+                update(r, "rejected");
+            }
+
+            @Override
+            public void onCreateContract(RentalRequest r) {
                 android.content.Intent i = new android.content.Intent(requireContext(),
                         com.hoan.qlpt.activity.landlord.CreateContractActivity.class);
                 i.putExtra("requestId", r.getId());
@@ -59,6 +69,12 @@ public class LandlordRequestsFragment extends Fragment {
                 i.putExtra("tenantName", r.getTenantName());
                 startActivity(i);
             }
+        });
+        adapter.setOnItemClick(r -> {
+            Intent i = new Intent(requireContext(),
+                    com.hoan.qlpt.activity.landlord.RequestDetailActivity.class);
+            i.putExtra("requestId", r.getId());
+            startActivity(i);
         });
         rv.setLayoutManager(new LinearLayoutManager(requireContext()));
         rv.setAdapter(adapter);
@@ -76,7 +92,10 @@ public class LandlordRequestsFragment extends Fragment {
                     items.clear();
                     for (DocumentSnapshot d : snap.getDocuments()) {
                         RentalRequest r = d.toObject(RentalRequest.class);
-                        if (r != null) { r.setId(d.getId()); items.add(r); }
+                        if (r != null) {
+                            r.setId(d.getId());
+                            items.add(r);
+                        }
                     }
                     // Mới nhất lên đầu (sắp xếp trên máy để khỏi cần index)
                     Collections.sort(items, (a, b) -> Long.compare(b.getCreatedAt(), a.getCreatedAt()));
@@ -97,7 +116,7 @@ public class LandlordRequestsFragment extends Fragment {
                     r.setStatus(status);
                     Notifier.send(r.getTenantId(),
                             "approved".equals(status) ? "Chủ trọ đã xác nhận lịch xem phòng" : "Lịch xem phòng bị từ chối",
-                            r.getRoomTitle());
+                            r.getRoomTitle(), "visit_result", r.getId());
                     adapter.notifyDataSetChanged();
                 })
                 .addOnFailureListener(e -> {

@@ -58,7 +58,8 @@ public class BarChartView extends View {
 
     // 1250000 -> "1,3tr", 245000 -> "245k"
     private String shortText(long v) {
-        if (v >= 1_000_000) return String.format(Locale.US, "%.1ftr", v / 1_000_000f).replace('.', ',');
+        if (v >= 1_000_000)
+            return String.format(Locale.US, "%.1ftr", v / 1_000_000f).replace('.', ',');
         if (v >= 1_000) return (v / 1_000) + "k";
         return String.valueOf(v);
     }

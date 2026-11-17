@@ -12,59 +12,228 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14dp" android:text="Đặt lịch xem phòng" android:textColor="#009688" android:textSize="24sp" android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:text="Đặt lịch xem phòng"
+            android:textColor="#009688"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10dp" android:hint="Địa chỉ">
-            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtAddress" android:layout_width="match_parent" android:layout_height="wrap_content" android:enabled="false" android:inputType="none" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:hint="Địa chỉ">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10dp" android:orientation="horizontal">
-            <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="6dp" android:hint="Mã phòng">
-                <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtRoomCode" android:layout_width="match_parent" android:layout_height="wrap_content" android:enabled="false" android:inputType="none" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:hint="Mã phòng">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtRoomCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" android:hint="Giá phòng">
-                <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtPriceShow" android:layout_width="match_parent" android:layout_height="wrap_content" android:enabled="false" android:inputType="none" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:hint="Giá phòng">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPriceShow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="6dp" android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Số người ở *" android:textStyle="bold" />
-                <Spinner android:id="@+id/spPeople" android:layout_width="match_parent" android:layout_height="48dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số người ở *"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spPeople"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp" />
             </LinearLayout>
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Số lượng xe *" android:textStyle="bold" />
-                <Spinner android:id="@+id/spVehicles" android:layout_width="match_parent" android:layout_height="48dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số lượng xe *"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spVehicles"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp" />
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:orientation="horizontal">
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="6dp" android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nuôi thú cưng *" android:textStyle="bold" />
-                <Spinner android:id="@+id/spPet" android:layout_width="match_parent" android:layout_height="48dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nuôi thú cưng *"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spPet"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp" />
             </LinearLayout>
-            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="6dp" android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ngày xem phòng *" android:textStyle="bold" />
-                <Button android:id="@+id/btnVisitDate" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="match_parent" android:layout_height="48dp" android:text="Chọn ngày" android:textAllCaps="false" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ngày xem phòng *"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnVisitDate"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Chọn ngày"
+                    android:textAllCaps="false" />
             </LinearLayout>
         </LinearLayout>
 
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Thời gian dự kiến vào ở *" android:textStyle="bold" />
-        <Spinner android:id="@+id/spMoveIn" android:layout_width="match_parent" android:layout_height="48dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Thời gian dự kiến vào ở *"
+            android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:hint="Tên khách hàng *">
-            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtName" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="textPersonName" />
+        <Spinner
+            android:id="@+id/spMoveIn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Tên khách hàng *">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:hint="Số điện thoại *">
-            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtPhone" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="phone" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Số điện thoại *">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:hint="Ghi chú">
-            <com.google.android.material.textfield.TextInputEditText android:id="@+id/edtNote" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="top" android:inputType="textMultiLine" android:minLines="2" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Ghi chú">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:minLines="2" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button android:id="@+id/btnSubmit" android:layout_width="match_parent" android:layout_height="54dp" android:layout_marginTop="18dp" android:backgroundTint="#009688" android:text="Đặt lịch hẹn" android:textAllCaps="false" android:textSize="16sp" app:cornerRadius="14dp" />
-        <ProgressBar android:id="@+id/progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:layout_marginTop="12dp" android:visibility="gone" />
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="18dp"
+            android:backgroundTint="#009688"
+            android:text="Đặt lịch hẹn"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:cornerRadius="14dp" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:visibility="gone" />
     </LinearLayout>
 </ScrollView>

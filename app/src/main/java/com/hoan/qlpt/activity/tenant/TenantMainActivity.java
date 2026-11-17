@@ -13,13 +13,12 @@ import com.google.firebase.firestore.AggregateSource;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.fragment.NotificationsFragment;
-import com.hoan.qlpt.fragment.PlaceholderFragment;
 import com.hoan.qlpt.fragment.ProfileFragment;
 import com.hoan.qlpt.fragment.SearchRoomsFragment;
 import com.hoan.qlpt.fragment.TenantHomeFragment;
 import com.hoan.qlpt.fragment.TenantInvoicesFragment;
-import com.hoan.qlpt.util.Role;
 import com.hoan.qlpt.util.AccountGuard;
+import com.hoan.qlpt.util.Role;
 
 public class TenantMainActivity extends AppCompatActivity {
 
@@ -45,8 +44,6 @@ public class TenantMainActivity extends AppCompatActivity {
                 show(new NotificationsFragment());
             } else if (id == R.id.nav_search) {
                 show(new SearchRoomsFragment());
-            } else {
-                show(PlaceholderFragment.newInstance("Thông báo"));
             }
 
             return true;
@@ -98,6 +95,7 @@ public class TenantMainActivity extends AppCompatActivity {
                     }
                 });
     }
+
     private final AccountGuard guard = new AccountGuard();
 
     @Override

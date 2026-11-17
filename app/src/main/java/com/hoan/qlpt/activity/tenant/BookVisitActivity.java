@@ -64,7 +64,10 @@ public class BookVisitActivity extends AppCompatActivity {
 
         String roomId = getIntent().getStringExtra("roomId");
         String uid = FirebaseAuth.getInstance().getUid();
-        if (roomId == null || uid == null) { finish(); return; }
+        if (roomId == null || uid == null) {
+            finish();
+            return;
+        }
 
         // Điền sẵn họ tên, số điện thoại từ hồ sơ
         db.collection("profiles").document(uid).get().addOnSuccessListener(p -> {
@@ -75,11 +78,18 @@ public class BookVisitActivity extends AppCompatActivity {
         db.collection("rooms").document(roomId).get()
                 .addOnSuccessListener(d -> {
                     room = d.toObject(Room.class);
-                    if (room == null) { toast("Không tìm thấy phòng"); finish(); return; }
+                    if (room == null) {
+                        toast("Không tìm thấy phòng");
+                        finish();
+                        return;
+                    }
                     room.setId(d.getId());
                     bindRoom();
                 })
-                .addOnFailureListener(e -> { toast("Lỗi tải: " + e.getMessage()); finish(); });
+                .addOnFailureListener(e -> {
+                    toast("Lỗi tải: " + e.getMessage());
+                    finish();
+                });
 
         btnVisitDate.setOnClickListener(v -> pickDate());
         btnSubmit.setOnClickListener(v -> submit(uid));
@@ -133,11 +143,26 @@ public class BookVisitActivity extends AppCompatActivity {
         if (room == null) return;
         String name = text(edtName), phone = text(edtPhone);
 
-        if (uid.equals(room.getLandlordId())) { toast("Đây là phòng của chính bạn"); return; }
-        if ("rented".equals(room.getRentStatus())) { toast("Phòng này đã có người thuê"); return; }
-        if (visitDate == 0) { toast("Hãy chọn ngày xem phòng"); return; }
-        if (name.isEmpty()) { toast("Nhập tên khách hàng"); return; }
-        if (!phone.matches("0\\d{9,10}")) { toast("Số điện thoại không hợp lệ"); return; }
+        if (uid.equals(room.getLandlordId())) {
+            toast("Đây là phòng của chính bạn");
+            return;
+        }
+        if ("rented".equals(room.getRentStatus())) {
+            toast("Phòng này đã có người thuê");
+            return;
+        }
+        if (visitDate == 0) {
+            toast("Hãy chọn ngày xem phòng");
+            return;
+        }
+        if (name.isEmpty()) {
+            toast("Nhập tên khách hàng");
+            return;
+        }
+        if (!phone.matches("0\\d{9,10}")) {
+            toast("Số điện thoại không hợp lệ");
+            return;
+        }
 
         setLoading(true);
         // Chặn gửi trùng: đã có lịch đang chờ cho phòng này
@@ -172,14 +197,21 @@ public class BookVisitActivity extends AppCompatActivity {
                     ref.set(r)
                             .addOnSuccessListener(v -> {
                                 Notifier.send(room.getLandlordId(), "Lịch xem phòng mới",
-                                        name + " đặt lịch xem " + room.getTitle()
-                                                + " ngày " + fmt.format(new Date(visitDate)));
+                                        name + " đặt lịch xem " + room.getTitle() + " ngày " + fmt.format(new Date(visitDate))
+                                                + ". Bấm để xác nhận.",
+                                        "visit_new", ref.getId());
                                 toast("Đã đặt lịch, chờ chủ trọ xác nhận");
                                 finish();
                             })
-                            .addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); });
+                            .addOnFailureListener(e -> {
+                                setLoading(false);
+                                toast("Lỗi: " + e.getMessage());
+                            });
                 })
-                .addOnFailureListener(e -> { setLoading(false); toast("Lỗi: " + e.getMessage()); });
+                .addOnFailureListener(e -> {
+                    setLoading(false);
+                    toast("Lỗi: " + e.getMessage());
+                });
     }
 
     private void setLoading(boolean loading) {
@@ -187,5 +219,7 @@ public class BookVisitActivity extends AppCompatActivity {
         btnSubmit.setEnabled(!loading);
     }
 
-    private void toast(String m) { Toast.makeText(this, m, Toast.LENGTH_LONG).show(); }
+    private void toast(String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
 }

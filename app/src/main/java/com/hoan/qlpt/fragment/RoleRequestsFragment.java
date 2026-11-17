@@ -1,5 +1,4 @@
 package com.hoan.qlpt.fragment;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +21,7 @@ import com.hoan.qlpt.activity.admin.RoleRequestDetailActivity;
 import com.hoan.qlpt.adapter.ApprovalAdapter;
 import com.hoan.qlpt.model.ApprovalItem;
 import com.hoan.qlpt.model.RoleRequest;
+import com.hoan.qlpt.util.EmptyState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +47,13 @@ public class RoleRequestsFragment extends Fragment {
         EmptyState.set(tvEmpty, "✅", "Không có yêu cầu nào chờ duyệt", "");
 
         adapter = new ApprovalAdapter(items, new ApprovalAdapter.Listener() {
-            @Override public void onApprove(ApprovalItem it) {}
-            @Override public void onReject(ApprovalItem it) {}
+            @Override
+            public void onApprove(ApprovalItem it) {
+            }
+
+            @Override
+            public void onReject(ApprovalItem it) {
+            }
         });
         adapter.setShowActions(false); // phải mở chi tiết xem rồi mới duyệt
         adapter.setOnItemClick(it -> {

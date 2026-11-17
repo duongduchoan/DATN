@@ -1,5 +1,4 @@
 package com.hoan.qlpt.fragment;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +22,7 @@ import com.hoan.qlpt.R;
 import com.hoan.qlpt.activity.landlord.CreateInvoiceActivity;
 import com.hoan.qlpt.adapter.InvoiceAdapter;
 import com.hoan.qlpt.model.Invoice;
+import com.hoan.qlpt.util.EmptyState;
 import com.hoan.qlpt.util.Notifier;
 
 import java.util.ArrayList;
@@ -72,7 +72,10 @@ public class LandlordInvoicesFragment extends Fragment {
                     items.clear();
                     for (DocumentSnapshot d : snap.getDocuments()) {
                         Invoice i = d.toObject(Invoice.class);
-                        if (i != null) { i.setId(d.getId()); items.add(i); }
+                        if (i != null) {
+                            i.setId(d.getId());
+                            items.add(i);
+                        }
                     }
                     Collections.sort(items, (a, b) -> Long.compare(b.getCreatedAt(), a.getCreatedAt()));
                     adapter.notifyDataSetChanged();

@@ -8,7 +8,9 @@ import androidx.appcompat.app.AlertDialog;
 
 public class ReasonDialog {
 
-    public interface OnReason { void onReason(String reason); }
+    public interface OnReason {
+        void onReason(String reason);
+    }
 
     public static void show(Context ctx, String title, OnReason cb) {
         EditText edt = new EditText(ctx);

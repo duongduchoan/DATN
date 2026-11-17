@@ -1,5 +1,4 @@
 package com.hoan.qlpt.activity;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.ApprovalAdapter;
 import com.hoan.qlpt.model.ApprovalItem;
 import com.hoan.qlpt.model.Incident;
+import com.hoan.qlpt.util.EmptyState;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,8 +54,13 @@ public class IncidentsActivity extends AppCompatActivity {
         fab.setOnClickListener(v -> startActivity(new Intent(this, CreateIncidentActivity.class)));
 
         adapter = new ApprovalAdapter(items, new ApprovalAdapter.Listener() {
-            @Override public void onApprove(ApprovalItem it) {}
-            @Override public void onReject(ApprovalItem it) {}
+            @Override
+            public void onApprove(ApprovalItem it) {
+            }
+
+            @Override
+            public void onReject(ApprovalItem it) {
+            }
         });
         adapter.setShowActions(false);
         adapter.setOnItemClick(it -> {
@@ -76,7 +81,10 @@ public class IncidentsActivity extends AppCompatActivity {
 
     private void load() {
         String uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
         FirebaseFirestore.getInstance().collection("incidents")
                 .whereEqualTo(landlordMode ? "landlordId" : "tenantId", uid)
                 .get()
@@ -84,7 +92,10 @@ public class IncidentsActivity extends AppCompatActivity {
                     List<Incident> list = new ArrayList<>();
                     for (DocumentSnapshot d : snap.getDocuments()) {
                         Incident i = d.toObject(Incident.class);
-                        if (i != null) { i.setId(d.getId()); list.add(i); }
+                        if (i != null) {
+                            i.setId(d.getId());
+                            list.add(i);
+                        }
                     }
                     Collections.sort(list, (a, b) -> Long.compare(b.getCreatedAt(), a.getCreatedAt()));
 

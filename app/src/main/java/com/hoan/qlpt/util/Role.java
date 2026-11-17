@@ -7,10 +7,14 @@ public class Role {
 
     public static String name(int roleId) {
         switch (roleId) {
-            case ADMIN: return "Admin";
-            case LANDLORD: return "Chủ trọ";
-            case TENANT: return "Người thuê";
-            default: return "Chưa xác định";
+            case ADMIN:
+                return "Admin";
+            case LANDLORD:
+                return "Chủ trọ";
+            case TENANT:
+                return "Người thuê";
+            default:
+                return "Chưa xác định";
         }
     }
 }

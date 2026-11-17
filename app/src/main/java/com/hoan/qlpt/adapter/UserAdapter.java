@@ -27,9 +27,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VH> {
     private final Listener listener;
 
 
-    public interface OnRowClick { void onClick(User u); }
+    public interface OnRowClick {
+        void onClick(User u);
+    }
+
     private OnRowClick onRowClick;
-    public void setOnRowClick(OnRowClick l) { onRowClick = l; }
+
+    public void setOnRowClick(OnRowClick l) {
+        onRowClick = l;
+    }
 
     public UserAdapter(
             List<User> users,

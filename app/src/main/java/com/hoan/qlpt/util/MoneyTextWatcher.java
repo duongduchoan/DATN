@@ -17,7 +17,9 @@ public class MoneyTextWatcher implements TextWatcher {
     private final EditText edt;
     private boolean editing = false;
 
-    private MoneyTextWatcher(EditText e) { edt = e; }
+    private MoneyTextWatcher(EditText e) {
+        edt = e;
+    }
 
     // Gắn vào một ô nhập tiền
     public static void attach(EditText e) {
@@ -37,8 +39,13 @@ public class MoneyTextWatcher implements TextWatcher {
         return Long.parseLong(d);
     }
 
-    @Override public void beforeTextChanged(CharSequence s, int a, int b, int c) {}
-    @Override public void onTextChanged(CharSequence s, int a, int b, int c) {}
+    @Override
+    public void beforeTextChanged(CharSequence s, int a, int b, int c) {
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int a, int b, int c) {
+    }
 
     @Override
     public void afterTextChanged(Editable s) {
@@ -49,7 +56,10 @@ public class MoneyTextWatcher implements TextWatcher {
         String formatted = digits.isEmpty() ? "" : NF.format(Long.parseLong(digits));
         if (!formatted.equals(s.toString())) {
             s.replace(0, s.length(), formatted);
-            try { edt.setSelection(edt.getText().length()); } catch (Exception ignored) { }
+            try {
+                edt.setSelection(edt.getText().length());
+            } catch (Exception ignored) {
+            }
         }
         editing = false;
     }

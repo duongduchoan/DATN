@@ -17,6 +17,7 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.VH> {
 
     public interface Listener {
         void onApprove(ApprovalItem item);
+
         void onReject(ApprovalItem item);
     }
 
@@ -44,19 +45,30 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.VH> {
         h.btnApprove.setOnClickListener(v -> listener.onApprove(it));
         h.btnReject.setOnClickListener(v -> listener.onReject(it));
         h.layoutActions.setVisibility(showActions ? View.VISIBLE : View.GONE);
-        h.itemView.setOnClickListener(v -> { if (onItemClick != null) onItemClick.onClick(it); });
+        h.itemView.setOnClickListener(v -> {
+            if (onItemClick != null) onItemClick.onClick(it);
+        });
     }
 
     @Override
-    public int getItemCount() { return items.size(); }
+    public int getItemCount() {
+        return items.size();
+    }
 
-    public interface OnItemClick { void onClick(ApprovalItem item); }
+    public interface OnItemClick {
+        void onClick(ApprovalItem item);
+    }
 
     private boolean showActions = true;
     private OnItemClick onItemClick;
 
-    public void setShowActions(boolean show) { showActions = show; }
-    public void setOnItemClick(OnItemClick l) { onItemClick = l; }
+    public void setShowActions(boolean show) {
+        showActions = show;
+    }
+
+    public void setOnItemClick(OnItemClick l) {
+        onItemClick = l;
+    }
 
 
     static class VH extends RecyclerView.ViewHolder {

@@ -54,16 +54,26 @@ public class RoomDetailActivity extends AppCompatActivity {
         ivFav = findViewById(R.id.ivFav);
 
         String roomId = getIntent().getStringExtra(EXTRA_ROOM_ID);
-        if (roomId == null) { finish(); return; }
+        if (roomId == null) {
+            finish();
+            return;
+        }
 
         db.collection("rooms").document(roomId).get()
                 .addOnSuccessListener(d -> {
                     room = d.toObject(Room.class);
-                    if (room == null) { toast("Không tìm thấy phòng"); finish(); return; }
+                    if (room == null) {
+                        toast("Không tìm thấy phòng");
+                        finish();
+                        return;
+                    }
                     room.setId(d.getId());
                     bind();
                 })
-                .addOnFailureListener(e -> { toast("Lỗi tải: " + e.getMessage()); finish(); });
+                .addOnFailureListener(e -> {
+                    toast("Lỗi tải: " + e.getMessage());
+                    finish();
+                });
 
         findViewById(R.id.btnFavorite).setOnClickListener(v -> toggleFavorite());
         findViewById(R.id.btnBook).setOnClickListener(v -> {
@@ -77,11 +87,17 @@ public class RoomDetailActivity extends AppCompatActivity {
 
     // ---------- Hiển thị ----------
 
-    private int dp(int v) { return Math.round(v * getResources().getDisplayMetrics().density); }
+    private int dp(int v) {
+        return Math.round(v * getResources().getDisplayMetrics().density);
+    }
 
-    private boolean empty(String s) { return s == null || s.isEmpty(); }
+    private boolean empty(String s) {
+        return s == null || s.isEmpty();
+    }
 
-    private String or(String s) { return empty(s) ? "Chưa cập nhật" : s; }
+    private String or(String s) {
+        return empty(s) ? "Chưa cập nhật" : s;
+    }
 
     // 3500 -> "3,5k"; 28000 -> "28k"
     private String shortMoney(long v) {
@@ -106,7 +122,8 @@ public class RoomDetailActivity extends AppCompatActivity {
         tvImageIndex.setVisibility(urls.isEmpty() ? View.GONE : View.VISIBLE);
         tvImageIndex.setText("1/" + urls.size());
         vp.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override public void onPageSelected(int position) {
+            @Override
+            public void onPageSelected(int position) {
                 tvImageIndex.setText((position + 1) + "/" + urls.size());
             }
         });
@@ -210,7 +227,10 @@ public class RoomDetailActivity extends AppCompatActivity {
     }
 
     private void callLandlord() {
-        if (empty(landlordPhone)) { toast("Chủ trọ chưa có số điện thoại"); return; }
+        if (empty(landlordPhone)) {
+            toast("Chủ trọ chưa có số điện thoại");
+            return;
+        }
         try {
             startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + landlordPhone)));
         } catch (Exception e) {
@@ -254,5 +274,7 @@ public class RoomDetailActivity extends AppCompatActivity {
         }
     }
 
-    private void toast(String m) { Toast.makeText(this, m, Toast.LENGTH_LONG).show(); }
+    private void toast(String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
 }

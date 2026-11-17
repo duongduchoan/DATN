@@ -34,7 +34,8 @@ public class ImageCompressor {
         try (InputStream in = open(cr, uri)) {
             BitmapFactory.decodeStream(in, null, bounds);
         }
-        if (bounds.outWidth <= 0 || bounds.outHeight <= 0) throw new IOException("Không đọc được ảnh");
+        if (bounds.outWidth <= 0 || bounds.outHeight <= 0)
+            throw new IOException("Không đọc được ảnh");
 
         // 2) Giải mã thu nhỏ theo lũy thừa của 2 để đỡ tốn RAM
         int sample = 1;
@@ -58,7 +59,8 @@ public class ImageCompressor {
             if (ori == ExifInterface.ORIENTATION_ROTATE_90) degrees = 90;
             else if (ori == ExifInterface.ORIENTATION_ROTATE_180) degrees = 180;
             else if (ori == ExifInterface.ORIENTATION_ROTATE_270) degrees = 270;
-        } catch (Exception ignored) { }
+        } catch (Exception ignored) {
+        }
 
         Matrix m = new Matrix();
         m.postScale(scale, scale);

@@ -37,7 +37,10 @@ public class BankInfoActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_dropdown_item, NAMES));
 
         String uid = FirebaseAuth.getInstance().getUid();
-        if (uid == null) { finish(); return; }
+        if (uid == null) {
+            finish();
+            return;
+        }
 
         FirebaseFirestore.getInstance().collection("payoutInfo").document(uid).get()
                 .addOnSuccessListener(d -> {

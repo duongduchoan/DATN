@@ -1,5 +1,4 @@
 package com.hoan.qlpt.fragment;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,11 +18,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.PendingRoomAdapter;
 import com.hoan.qlpt.model.Room;
+import com.hoan.qlpt.util.EmptyState;
 import com.hoan.qlpt.util.Notifier;
+import com.hoan.qlpt.util.ReasonDialog;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.hoan.qlpt.util.ReasonDialog;
 
 public class ApproveRoomsFragment extends Fragment {
 
@@ -46,8 +46,13 @@ public class ApproveRoomsFragment extends Fragment {
         EmptyState.set(tvEmpty, "✅", "Không có phòng nào chờ duyệt", "Mọi tin đăng đã được xử lý");
 
         adapter = new PendingRoomAdapter(rooms, new PendingRoomAdapter.Listener() {
-            @Override public void onApprove(Room room) { updateStatus(room, "approved", ""); }
-            @Override public void onReject(Room room) {
+            @Override
+            public void onApprove(Room room) {
+                updateStatus(room, "approved", "");
+            }
+
+            @Override
+            public void onReject(Room room) {
                 ReasonDialog.show(requireContext(), "Từ chối phòng: " + room.getTitle(),
                         reason -> updateStatus(room, "rejected", reason));
             }
@@ -66,7 +71,10 @@ public class ApproveRoomsFragment extends Fragment {
                     rooms.clear();
                     for (DocumentSnapshot d : snap.getDocuments()) {
                         Room r = d.toObject(Room.class);
-                        if (r != null) { r.setId(d.getId()); rooms.add(r); }
+                        if (r != null) {
+                            r.setId(d.getId());
+                            rooms.add(r);
+                        }
                     }
                     adapter.notifyDataSetChanged();
                     tvEmpty.setVisibility(rooms.isEmpty() ? View.VISIBLE : View.GONE);

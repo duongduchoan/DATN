@@ -78,7 +78,10 @@ public class RoomDetailsForm {
 
     private void select(Spinner sp, String[] opts, String value) {
         for (int i = 0; i < opts.length; i++) {
-            if (opts[i].equals(value)) { sp.setSelection(i); return; }
+            if (opts[i].equals(value)) {
+                sp.setSelection(i);
+                return;
+            }
         }
     }
 
@@ -87,7 +90,9 @@ public class RoomDetailsForm {
         return o == null ? "" : o.toString();
     }
 
-    private long num(TextInputEditText e) { return MoneyTextWatcher.parse(e.getText()); }
+    private long num(TextInputEditText e) {
+        return MoneyTextWatcher.parse(e.getText());
+    }
 
     // Trả về thông báo lỗi, hoặc null nếu hợp lệ
     public String validate() {

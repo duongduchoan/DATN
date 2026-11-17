@@ -19,7 +19,9 @@ import java.util.Locale;
 
 public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.VH> {
 
-    public interface OnClick { void onClick(Invoice invoice); }
+    public interface OnClick {
+        void onClick(Invoice invoice);
+    }
 
     private final List<Invoice> items;
     private final OnClick onClick;
@@ -63,10 +65,13 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.VH> {
     }
 
     @Override
-    public int getItemCount() { return items.size(); }
+    public int getItemCount() {
+        return items.size();
+    }
 
     static class VH extends RecyclerView.ViewHolder {
         TextView tvTitle, tvTotal, tvDue, tvStatus;
+
         VH(View v) {
             super(v);
             tvTitle = v.findViewById(R.id.tvTitle);

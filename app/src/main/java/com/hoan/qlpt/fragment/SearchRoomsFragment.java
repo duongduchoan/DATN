@@ -1,5 +1,4 @@
 package com.hoan.qlpt.fragment;
-import com.hoan.qlpt.util.EmptyState;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +28,8 @@ import com.hoan.qlpt.R;
 import com.hoan.qlpt.activity.guest.RoomDetailActivity;
 import com.hoan.qlpt.adapter.RoomAdapter;
 import com.hoan.qlpt.model.Room;
+import com.hoan.qlpt.util.Amenities;
+import com.hoan.qlpt.util.EmptyState;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -36,7 +37,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-import com.hoan.qlpt.util.Amenities;
 
 public class SearchRoomsFragment extends Fragment {
 
@@ -79,9 +79,18 @@ public class SearchRoomsFragment extends Fragment {
         rv.setAdapter(adapter);
 
         edtSearch.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int a, int b, int c) {}
-            @Override public void onTextChanged(CharSequence s, int a, int b, int c) {}
-            @Override public void afterTextChanged(Editable s) { applyFilter(); }
+            @Override
+            public void beforeTextChanged(CharSequence s, int a, int b, int c) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int a, int b, int c) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                applyFilter();
+            }
         });
         chipGroupPrice.setOnCheckedStateChangeListener((g, ids) -> applyFilter());
         btnFilter.setOnClickListener(v -> showFilterSheet());
@@ -153,6 +162,7 @@ public class SearchRoomsFragment extends Fragment {
         dlg.setContentView(v);
         dlg.show();
     }
+
     // Nút hiện số bộ lọc đang bật: "Bộ lọc (2)"
     private void updateFilterButton() {
         int n = amenityFilter.size() + (sortMode != 0 ? 1 : 0);
@@ -174,16 +184,24 @@ public class SearchRoomsFragment extends Fragment {
         int priceId = chipGroupPrice.getCheckedChipId();
 
         long min = 0, max = Long.MAX_VALUE;
-        if (priceId == R.id.chipP1) { max = 2_000_000L; }
-        else if (priceId == R.id.chipP2) { min = 2_000_000L; max = 4_000_000L; }
-        else if (priceId == R.id.chipP3) { min = 4_000_000L; }
+        if (priceId == R.id.chipP1) {
+            max = 2_000_000L;
+        } else if (priceId == R.id.chipP2) {
+            min = 2_000_000L;
+            max = 4_000_000L;
+        } else if (priceId == R.id.chipP3) {
+            min = 4_000_000L;
+        }
 
         rooms.clear();
         for (Room r : allRooms) {
             if (r.getPrice() < min || r.getPrice() > max) continue;
             boolean okAmenity = true;
             for (String a : amenityFilter) {
-                if (!Amenities.has(r.getAmenities(), a)) { okAmenity = false; break; }
+                if (!Amenities.has(r.getAmenities(), a)) {
+                    okAmenity = false;
+                    break;
+                }
             }
             if (!okAmenity) continue;
             if (!keyword.isEmpty()) {

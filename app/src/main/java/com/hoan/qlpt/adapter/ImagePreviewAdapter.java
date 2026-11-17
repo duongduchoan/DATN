@@ -16,13 +16,12 @@ import java.util.List;
 
 public class ImagePreviewAdapter extends RecyclerView.Adapter<ImagePreviewAdapter.VH> {
 
-    public interface OnRemove { void onRemove(int position); }
+    public interface OnRemove {
+        void onRemove(int position);
+    }
 
     private final List<Uri> uris;
     private final OnRemove onRemove;
-
-    // Bản không có nút xóa (giữ để không vỡ chỗ cũ)
-    public ImagePreviewAdapter(List<Uri> uris) { this(uris, null); }
 
     public ImagePreviewAdapter(List<Uri> uris, OnRemove onRemove) {
         this.uris = uris;
@@ -47,11 +46,14 @@ public class ImagePreviewAdapter extends RecyclerView.Adapter<ImagePreviewAdapte
     }
 
     @Override
-    public int getItemCount() { return uris.size(); }
+    public int getItemCount() {
+        return uris.size();
+    }
 
     static class VH extends RecyclerView.ViewHolder {
         ImageView img;
         View btnRemove;
+
         VH(View v) {
             super(v);
             img = v.findViewById(R.id.img);

@@ -16,8 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
 import com.hoan.qlpt.R;
-import com.hoan.qlpt.model.User;
 import com.hoan.qlpt.model.Profile;
+import com.hoan.qlpt.model.User;
 import com.hoan.qlpt.util.Role;
 
 public class RegisterActivity extends AppCompatActivity {

@@ -48,7 +48,10 @@ public class AddHouseActivity extends AppCompatActivity {
         h.setDescription(text(edtDescription));
         h.setCreatedAt(System.currentTimeMillis());
         ref.set(h)
-                .addOnSuccessListener(v -> { Toast.makeText(this, "Đã lưu nhà trọ", Toast.LENGTH_SHORT).show(); finish(); })
+                .addOnSuccessListener(v -> {
+                    Toast.makeText(this, "Đã lưu nhà trọ", Toast.LENGTH_SHORT).show();
+                    finish();
+                })
                 .addOnFailureListener(e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_LONG).show());
     }
 }

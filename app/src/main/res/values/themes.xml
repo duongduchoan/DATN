@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.QLPT" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -7,6 +7,7 @@
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="textInputStyle">@style/App.TextInput</item>
     </style>
+
     <style name="App.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="boxCornerRadiusTopStart">12dp</item>
         <item name="boxCornerRadiusTopEnd">12dp</item>
