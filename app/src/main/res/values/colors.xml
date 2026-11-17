@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App Theme Colors -->
-    <color name="colorPrimary">#1976D2</color>
-    <color name="colorPrimaryDark">#1565C0</color>
-    <color name="colorAccent">#FF6F00</color>
+    <!-- Bảng màu trung tâm QLPT -->
+    <color name="qlpt_primary">#009688</color>
+    <color name="qlpt_primary_dark">#00796B</color>
+    <color name="qlpt_primary_container">#E0F2F1</color>
+    <color name="qlpt_on_primary_container">#00695C</color>
+    <color name="qlpt_accent">#F57C00</color>
+
+    <color name="qlpt_background">#F5F7FA</color>
+    <color name="qlpt_surface">#FFFFFF</color>
+    <color name="qlpt_surface_variant">#F1F3F5</color>
+
+    <color name="qlpt_text">#212121</color>
+    <color name="qlpt_text_secondary">#616161</color>
+    <color name="qlpt_text_hint">#9E9E9E</color>
+    <color name="qlpt_border">#E5E7EB</color>
+
+    <color name="qlpt_success">#2E7D32</color>
+    <color name="qlpt_success_bg">#E8F5E9</color>
+    <color name="qlpt_warning">#EF6C00</color>
+    <color name="qlpt_warning_bg">#FFF3E0</color>
+    <color name="qlpt_error">#E53935</color>
+    <color name="qlpt_error_bg">#FFEBEE</color>
+    <color name="qlpt_neutral_bg">#EEF0F2</color>
+    <color name="qlpt_scrim">#99000000</color>
+
+    <!-- App Theme Colors (tên cũ, trỏ sang bảng màu mới) -->
+    <color name="colorPrimary">@color/qlpt_primary</color>
+    <color name="colorPrimaryDark">@color/qlpt_primary_dark</color>
+    <color name="colorAccent">@color/qlpt_accent</color>
 </resources>

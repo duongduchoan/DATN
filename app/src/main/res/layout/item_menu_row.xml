@@ -13,6 +13,7 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center_vertical"
+        android:minHeight="56dp"
         android:orientation="horizontal"
         android:paddingStart="16dp"
         android:paddingTop="12dp"
@@ -22,7 +23,7 @@
         <FrameLayout
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginEnd="14dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/bg_icon_circle">
 
             <ImageView
@@ -31,7 +32,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:importantForAccessibility="no"
-                app:tint="#00897B" />
+                app:tint="@color/qlpt_primary" />
         </FrameLayout>
 
         <LinearLayout
@@ -44,16 +45,17 @@
                 android:id="@+id/tvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#212121"
+                android:textColor="@color/qlpt_text"
                 android:textSize="16sp" />
 
+            <!-- Màu chữ có thể bị Java đổi (vd: lý do bị từ chối màu đỏ) -->
             <TextView
                 android:id="@+id/tvSub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:textColor="#757575"
-                android:textSize="13sp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp"
                 android:visibility="gone" />
         </LinearLayout>
 
@@ -65,29 +67,30 @@
             android:background="@drawable/bg_badge_red"
             android:gravity="center"
             android:minWidth="22dp"
-            android:paddingStart="7dp"
-            android:paddingTop="1dp"
-            android:paddingEnd="7dp"
-            android:paddingBottom="1dp"
-            android:textColor="#FFFFFF"
+            android:paddingStart="8dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="2dp"
+            android:textColor="@color/qlpt_surface"
             android:textSize="12sp"
             android:textStyle="bold"
             android:visibility="gone" />
 
         <ImageView
             android:id="@+id/ivChevron"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginStart="4dp"
             android:importantForAccessibility="no"
             android:src="@drawable/ic_chevron_right"
-            app:tint="#9E9E9E" />
+            app:tint="@color/qlpt_text_hint" />
     </LinearLayout>
 
+    <!-- Lề trái = 16 (padding) + 36 (icon) + 16 (khoảng cách) để thẳng hàng với chữ -->
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="66dp"
-        android:background="#F0F0F0" />
+        android:layout_marginStart="68dp"
+        android:background="@color/qlpt_border" />
 </LinearLayout>

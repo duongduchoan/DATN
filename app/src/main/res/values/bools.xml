@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tới Android 14: thanh trạng thái nền xanh ngọc đậm nên dùng icon sáng -->
+    <bool name="qlpt_light_status_bar">false</bool>
+</resources>

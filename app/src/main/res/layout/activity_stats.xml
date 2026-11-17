@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA">
+    android:background="@color/qlpt_background"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:id="@+id/rootStats"
@@ -16,9 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Chi phí điện nước"
-            android:textColor="#009688"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.ScreenTitle" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
 
             <Button
                 android:id="@+id/btnPrevYear"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Widget.QLPT.Button.Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="‹"
@@ -45,7 +45,7 @@
 
             <Button
                 android:id="@+id/btnNextYear"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Widget.QLPT.Button.Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="›"
@@ -62,21 +62,21 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipElec"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Widget.QLPT.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Điện" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipWater"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Widget.QLPT.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nước" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipTotal"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                style="@style/Widget.QLPT.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -88,14 +88,14 @@
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_marginTop="8dp"
-            android:background="#FFFFFF" />
+            android:background="@color/qlpt_surface" />
 
         <TextView
             android:id="@+id/tvNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textColor="#666666"
+            android:textColor="@color/qlpt_text_secondary"
             android:textSize="12sp" />
 
         <include

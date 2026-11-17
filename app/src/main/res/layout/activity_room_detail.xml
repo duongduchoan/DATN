@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- fitsSystemWindows: chừa chỗ cho thanh trạng thái/thanh điều hướng khi Android 15+ ép tràn viền -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
+    android:background="@color/qlpt_surface"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/qlpt_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -24,7 +28,7 @@
                     android:id="@+id/vpImages"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#E0E0E0" />
+                    android:background="@color/qlpt_surface_variant" />
 
                 <TextView
                     android:id="@+id/tvImageIndex"
@@ -32,12 +36,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
                     android:layout_margin="12dp"
-                    android:background="#99000000"
-                    android:paddingStart="10dp"
-                    android:paddingTop="3dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="3dp"
-                    android:textColor="#FFFFFF"
+                    android:background="@drawable/bg_scrim_pill"
+                    android:paddingStart="12dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="4dp"
+                    android:textColor="@color/qlpt_surface"
                     android:textSize="12sp" />
             </FrameLayout>
 
@@ -45,33 +49,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_card_outlined"
                 android:orientation="vertical"
                 android:padding="16dp">
 
                 <TextView
+                    style="@style/Widget.QLPT.Badge.Success"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_verified"
                     android:drawableStart="@drawable/ic_verified"
                     android:drawablePadding="4dp"
-                    android:drawableTint="#2E7D32"
+                    android:drawableTint="@color/qlpt_success"
                     android:gravity="center_vertical"
-                    android:paddingStart="8dp"
-                    android:paddingTop="3dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="3dp"
-                    android:text="Đã xác thực"
-                    android:textColor="#2E7D32"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:text="Đã xác thực" />
 
                 <TextView
                     android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textColor="#212121"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/qlpt_text"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -79,17 +79,17 @@
                     android:id="@+id/tvPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:textColor="#E53935"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="4dp"
+                    android:textAppearance="@style/TextAppearance.QLPT.Price"
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/tvArea"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="#009688"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/qlpt_primary"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -97,15 +97,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="#616161" />
+                    android:textAppearance="@style/TextAppearance.QLPT.Body" />
             </LinearLayout>
 
             <!-- Tiện nghi -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="#FFFFFF"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_card_outlined"
                 android:orientation="vertical"
                 android:padding="12dp">
 
@@ -113,8 +115,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
+                    android:letterSpacing="0.04"
                     android:text="TIỆN NGHI"
-                    android:textColor="#212121"
+                    android:textColor="@color/qlpt_text_secondary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -130,16 +133,19 @@
                 android:id="@+id/layoutDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="#FFFFFF"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_card_outlined"
                 android:orientation="vertical"
                 android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0.04"
                     android:text="CHI PHÍ VÀ ĐIỀU KIỆN"
-                    android:textColor="#212121"
+                    android:textColor="@color/qlpt_text_secondary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -147,21 +153,22 @@
                     android:id="@+id/glCosts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:columnCount="3" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginBottom="14dp"
-                    android:background="#EEEEEE" />
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/qlpt_border" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0.04"
                     android:text="THÔNG TIN CHI TIẾT"
-                    android:textColor="#212121"
+                    android:textColor="@color/qlpt_text_secondary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -169,7 +176,7 @@
                     android:id="@+id/glInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:columnCount="3" />
             </LinearLayout>
 
@@ -177,27 +184,33 @@
                 android:id="@+id/tvNoDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="#FFFFFF"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_card_outlined"
                 android:padding="16dp"
                 android:text="Chủ trọ chưa cập nhật chi phí và điều kiện của phòng này."
-                android:textColor="#9E9E9E"
+                android:textColor="@color/qlpt_text_hint"
+                android:textSize="14sp"
                 android:visibility="gone" />
 
             <!-- Mô tả -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="#FFFFFF"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_card_outlined"
                 android:orientation="vertical"
                 android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0.04"
                     android:text="MÔ TẢ"
-                    android:textColor="#212121"
+                    android:textColor="@color/qlpt_text_secondary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -207,24 +220,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:lineSpacingExtra="4dp"
-                    android:textColor="#424242" />
+                    android:textColor="@color/qlpt_text"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <!-- Chủ trọ -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="12dp"
-                android:background="#FFFFFF"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bg_card_outlined"
                 android:orientation="vertical"
                 android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:letterSpacing="0.04"
                     android:text="CHỦ TRỌ"
-                    android:textColor="#212121"
+                    android:textColor="@color/qlpt_text_secondary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
@@ -233,7 +249,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:textColor="#424242" />
+                    android:textColor="@color/qlpt_text"
+                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -242,17 +259,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="@color/qlpt_surface"
         android:elevation="8dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingStart="8dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="12dp">
 
         <LinearLayout
             android:id="@+id/btnFavorite"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
@@ -265,36 +285,33 @@
                 android:layout_height="24dp"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_favorite_border"
-                app:tint="#009688" />
+                app:tint="@color/qlpt_primary" />
 
             <TextView
                 android:id="@+id/tvFav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:text="Lưu phòng"
-                android:textColor="#616161"
+                android:textColor="@color/qlpt_text_secondary"
                 android:textSize="12sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/btnBook"
+            style="@style/Widget.QLPT.Button.Large"
             android:layout_width="0dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:backgroundTint="#009688"
-            android:text="Đặt lịch hẹn"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            app:cornerRadius="26dp" />
+            android:text="Đặt lịch hẹn" />
 
         <LinearLayout
             android:id="@+id/btnCall"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
@@ -306,14 +323,14 @@
                 android:layout_height="24dp"
                 android:importantForAccessibility="no"
                 android:src="@drawable/ic_phone"
-                app:tint="#009688" />
+                app:tint="@color/qlpt_primary" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="4dp"
                 android:text="Gọi chủ trọ"
-                android:textColor="#616161"
+                android:textColor="@color/qlpt_text_secondary"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>

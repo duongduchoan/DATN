@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- fitsSystemWindows: chừa chỗ cho thanh trạng thái/thanh điều hướng khi Android 15+ ép tràn viền -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
-    android:fillViewport="true">
+    android:background="@color/qlpt_background"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,32 +18,29 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#009688"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.ScreenTitle" />
 
+        <!-- Chữ và màu chữ do Java đặt theo trạng thái hóa đơn -->
         <TextView
             android:id="@+id/tvStatus"
+            style="@style/Widget.QLPT.Badge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textStyle="bold" />
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:id="@+id/tvMethod"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:textColor="#666666"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.QLPT.Body"
             android:visibility="gone" />
 
         <!-- Thẻ biên lai -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp">
+            android:layout_marginTop="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,6 +59,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Tiền phòng"
+                        android:textColor="@color/qlpt_text"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -67,6 +68,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="end"
+                        android:textColor="@color/qlpt_text"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -74,7 +77,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -87,15 +90,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tiền điện"
+                            android:textColor="@color/qlpt_text"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tvElecDetail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:textColor="#666666"
-                            android:textSize="13sp" />
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/qlpt_text_secondary"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <TextView
@@ -104,6 +109,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:gravity="end"
+                        android:textColor="@color/qlpt_text"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -111,7 +118,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -124,15 +131,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tiền nước"
+                            android:textColor="@color/qlpt_text"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/tvWaterDetail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:textColor="#666666"
-                            android:textSize="13sp" />
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/qlpt_text_secondary"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <TextView
@@ -141,6 +150,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:gravity="end"
+                        android:textColor="@color/qlpt_text"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -148,7 +159,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -161,15 +172,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Phí khác"
+                            android:textColor="@color/qlpt_text"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="4dp"
                             android:text="Rác, wifi, dịch vụ"
-                            android:textColor="#666666"
-                            android:textSize="13sp" />
+                            android:textColor="@color/qlpt_text_secondary"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <TextView
@@ -178,6 +191,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:gravity="end"
+                        android:textColor="@color/qlpt_text"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -186,7 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/divider_dash"
                     android:layerType="software" />
 
@@ -201,8 +216,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:letterSpacing="0.04"
                         android:text="TỔNG CỘNG"
-                        android:textSize="15sp"
+                        android:textColor="@color/qlpt_text"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -210,9 +227,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="end"
-                        android:textColor="#FF9800"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
+                        android:textAppearance="@style/TextAppearance.QLPT.Price"
+                        android:textSize="24sp" />
                 </LinearLayout>
 
                 <TextView
@@ -220,8 +236,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:textColor="#666666"
-                    android:textSize="13sp" />
+                    android:drawableStart="@drawable/ic_event"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/qlpt_text_hint"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/TextAppearance.QLPT.Body" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -230,40 +249,47 @@
             android:id="@+id/layoutPay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_card_outlined"
             android:orientation="vertical"
+            android:padding="16dp"
             android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chọn hình thức thanh toán"
-                android:textStyle="bold" />
+                android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
             <RadioGroup
                 android:id="@+id/rgMethod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/rbTransfer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chuyển khoản (quét mã QR)" />
+                    android:text="Chuyển khoản (quét mã QR)"
+                    android:textColor="@color/qlpt_text"
+                    android:textSize="14sp" />
 
                 <RadioButton
                     android:id="@+id/rbCash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tiền mặt (đưa trực tiếp cho chủ trọ)" />
+                    android:text="Tiền mặt (đưa trực tiếp cho chủ trọ)"
+                    android:textColor="@color/qlpt_text"
+                    android:textSize="14sp" />
             </RadioGroup>
 
             <LinearLayout
                 android:id="@+id/layoutQr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
@@ -271,21 +297,26 @@
                     android:id="@+id/imgQr"
                     android:layout_width="260dp"
                     android:layout_height="260dp"
-                    android:background="#FFFFFF"
+                    android:background="@drawable/bg_card_outlined"
+                    android:padding="8dp"
                     android:scaleType="fitCenter" />
 
                 <TextView
                     android:id="@+id/tvBank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center" />
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:textColor="@color/qlpt_text"
+                    android:textSize="14sp" />
 
                 <Button
                     android:id="@+id/btnCopy"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/Widget.QLPT.Button.Outlined"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="Sao chép nội dung chuyển khoản" />
             </LinearLayout>
 
@@ -293,16 +324,17 @@
                 android:id="@+id/tvCashNote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:text="Bạn đưa tiền mặt trực tiếp cho chủ trọ, rồi bấm nút bên dưới để chủ trọ xác nhận."
-                android:textColor="#444444" />
+                android:textAppearance="@style/TextAppearance.QLPT.Body" />
 
+            <!-- Chữ trên nút do Java đặt theo hình thức đã chọn -->
             <Button
                 android:id="@+id/btnPaid"
+                style="@style/Widget.QLPT.Button.Large"
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="#009688" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

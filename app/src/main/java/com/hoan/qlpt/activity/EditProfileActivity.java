@@ -8,9 +8,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.PickVisualMediaRequest;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hoan.qlpt.R;
+import com.hoan.qlpt.util.ImageSourceHelper;
 import com.hoan.qlpt.util.ImageUploader;
 
 import java.util.HashMap;
@@ -33,13 +31,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private TextInputEditText edtName, edtPhone;
     private Button btnSave;
     private ProgressBar progress;
-
-    private final ActivityResultLauncher<PickVisualMediaRequest> picker = registerForActivityResult(
-            new ActivityResultContracts.PickVisualMedia(), uri -> {
-                if (uri == null) return;
-                newAvatar = uri;
-                Glide.with(this).load(uri).circleCrop().into(imgAvatar);
-            });
+    private ImageSourceHelper imageSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +63,12 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        View.OnClickListener pick = v -> picker.launch(new PickVisualMediaRequest.Builder()
-                .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
-                .build());
+        imageSource = new ImageSourceHelper(this, 1, uris -> {
+            if (uris.isEmpty()) return;
+            newAvatar = uris.get(0);
+            Glide.with(this).load(newAvatar).circleCrop().into(imgAvatar);
+        });
+        View.OnClickListener pick = v -> imageSource.show();
         findViewById(R.id.btnPickAvatar).setOnClickListener(pick);
         imgAvatar.setOnClickListener(pick);
 

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 15+: app vẽ tràn viền, vùng thanh trạng thái là nền trắng nên dùng icon tối -->
+    <bool name="qlpt_light_status_bar">true</bool>
+</resources>

@@ -9,9 +9,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.PickVisualMediaRequest;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.ImagePreviewAdapter;
 import com.hoan.qlpt.model.RoleRequest;
+import com.hoan.qlpt.util.ImageSourceHelper;
 import com.hoan.qlpt.util.ImageUploader;
 
 import java.util.ArrayList;
@@ -35,7 +33,7 @@ public class RequestLandlordActivity extends AppCompatActivity {
     private final List<Uri> selectedUris = new ArrayList<>();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private ImagePreviewAdapter previewAdapter;
-    private ActivityResultLauncher<PickVisualMediaRequest> picker;
+    private ImageSourceHelper imageSource;
     private TextInputEditText edtName, edtPhone, edtCccd, edtHouseCount, edtRoomCount,
             edtHouseAddress, edtDescription;
     private TextView tvImageCount;
@@ -70,8 +68,7 @@ public class RequestLandlordActivity extends AppCompatActivity {
         rv.setAdapter(previewAdapter);
         updateImageCount();
 
-        picker = registerForActivityResult(
-                new ActivityResultContracts.PickMultipleVisualMedia(MAX_IMAGES), uris -> {
+        imageSource = new ImageSourceHelper(this, MAX_IMAGES, uris -> {
                     boolean over = false;
                     for (Uri u : uris) {
                         if (selectedUris.contains(u)) continue; // bỏ ảnh trùng
@@ -91,9 +88,7 @@ public class RequestLandlordActivity extends AppCompatActivity {
                 toast("Đã đủ " + MAX_IMAGES + " ảnh. Hãy xóa bớt trước khi chọn thêm");
                 return;
             }
-            picker.launch(new PickVisualMediaRequest.Builder()
-                    .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
-                    .build());
+            imageSource.show();
         });
 
         // Điền sẵn từ hồ sơ

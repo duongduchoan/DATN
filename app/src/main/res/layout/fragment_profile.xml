@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
+    android:background="@color/qlpt_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -15,12 +15,7 @@
         <!-- Thẻ hồ sơ: bố cục ngang -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#E5E7EB"
-            app:strokeWidth="1dp">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,6 +28,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp">
 
+                    <!-- Màu tint do Java đặt (xám khi chưa có ảnh) -->
                     <ImageView
                         android:id="@+id/imgAvatar"
                         android:layout_width="64dp"
@@ -42,7 +38,7 @@
                         android:padding="14dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/ic_person"
-                        app:tint="#9E9E9E" />
+                        app:tint="@color/qlpt_text_hint" />
 
                     <FrameLayout
                         android:id="@+id/btnCameraBadge"
@@ -59,7 +55,7 @@
                             android:layout_gravity="center"
                             android:importantForAccessibility="no"
                             android:src="@drawable/ic_camera"
-                            app:tint="#FFFFFF" />
+                            app:tint="@color/qlpt_surface" />
                     </FrameLayout>
                 </FrameLayout>
 
@@ -76,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:textColor="#212121"
+                        android:textColor="@color/qlpt_text"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -84,25 +80,17 @@
                         android:id="@+id/tvEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginTop="4dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:textColor="#757575"
-                        android:textSize="14sp" />
+                        android:textAppearance="@style/TextAppearance.QLPT.Body" />
 
                     <TextView
                         android:id="@+id/tvRole"
+                        style="@style/Widget.QLPT.Badge.Primary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/bg_badge_teal"
-                        android:paddingStart="12dp"
-                        android:paddingTop="3dp"
-                        android:paddingEnd="12dp"
-                        android:paddingBottom="3dp"
-                        android:textColor="#00695C"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="8dp" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -112,21 +100,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:letterSpacing="0.04"
             android:text="TÀI KHOẢN"
-            android:textColor="#9E9E9E"
+            android:textColor="@color/qlpt_text_hint"
             android:textSize="12sp"
             android:textStyle="bold" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#E5E7EB"
-            app:strokeWidth="1dp">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/llAccount"
@@ -141,9 +125,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="6dp"
-            android:textColor="#9E9E9E"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:letterSpacing="0.04"
+            android:textColor="@color/qlpt_text_hint"
             android:textSize="12sp"
             android:textStyle="bold"
             android:visibility="gone" />
@@ -152,12 +137,7 @@
             android:id="@+id/cardWork"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="0dp"
-            app:strokeColor="#E5E7EB"
-            app:strokeWidth="1dp">
+            android:visibility="gone">
 
             <LinearLayout
                 android:id="@+id/llWork"
@@ -168,16 +148,20 @@
 
         <Button
             android:id="@+id/btnLogout"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.QLPT.Button.Outlined"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="8dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:minHeight="52dp"
             android:text="Đăng xuất"
-            android:textAllCaps="false"
-            android:textColor="#E53935"
+            android:textColor="@color/qlpt_error"
             android:textSize="16sp"
-            app:cornerRadius="12dp"
-            app:strokeColor="#E53935" />
+            app:icon="@drawable/ic_logout"
+            app:iconGravity="textStart"
+            app:iconTint="@color/qlpt_error"
+            app:strokeColor="@color/qlpt_error" />
     </LinearLayout>
 </ScrollView>

@@ -7,26 +7,27 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="24dp"
         android:text="Tiện nghi"
-        android:textStyle="bold" />
+        android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cgAmenities"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="24dp"
         android:text="Chi phí và điều kiện"
-        android:textStyle="bold" />
+        android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -61,7 +62,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -96,7 +97,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -133,7 +134,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -147,12 +148,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tầng"
-                android:textColor="#666666" />
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp" />
 
             <Spinner
                 android:id="@+id/rdFloor"
+                style="@style/Widget.QLPT.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="46dp" />
+                android:layout_height="52dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -166,18 +170,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Toilet"
-                android:textColor="#666666" />
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp" />
 
             <Spinner
                 android:id="@+id/rdToilet"
+                style="@style/Widget.QLPT.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="46dp" />
+                android:layout_height="52dp" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -191,12 +199,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Giờ giấc"
-                android:textColor="#666666" />
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp" />
 
             <Spinner
                 android:id="@+id/rdCurfew"
+                style="@style/Widget.QLPT.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="46dp" />
+                android:layout_height="52dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -210,18 +221,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Máy giặt"
-                android:textColor="#666666" />
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp" />
 
             <Spinner
                 android:id="@+id/rdWasher"
+                style="@style/Widget.QLPT.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="46dp" />
+                android:layout_height="52dp" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -235,12 +250,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cửa sổ"
-                android:textColor="#666666" />
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp" />
 
             <Spinner
                 android:id="@+id/rdWindow"
+                style="@style/Widget.QLPT.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="46dp" />
+                android:layout_height="52dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -254,18 +272,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ban công"
-                android:textColor="#666666" />
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp" />
 
             <Spinner
                 android:id="@+id/rdBalcony"
+                style="@style/Widget.QLPT.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="46dp" />
+                android:layout_height="52dp" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -279,12 +301,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thú cưng"
-                android:textColor="#666666" />
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp" />
 
             <Spinner
                 android:id="@+id/rdPets"
+                style="@style/Widget.QLPT.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="46dp" />
+                android:layout_height="52dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -298,29 +323,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Để xe"
-                android:textColor="#666666" />
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp" />
 
             <Spinner
                 android:id="@+id/rdParking"
+                style="@style/Widget.QLPT.Spinner"
                 android:layout_width="match_parent"
-                android:layout_height="46dp" />
+                android:layout_height="52dp" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Chỗ sạc xe điện"
-            android:textColor="#666666" />
+            android:layout_marginBottom="4dp"
+                android:textColor="@color/qlpt_text_secondary"
+                android:textSize="12sp" />
 
         <Spinner
             android:id="@+id/rdEv"
+            style="@style/Widget.QLPT.Spinner"
             android:layout_width="match_parent"
-            android:layout_height="46dp" />
+            android:layout_height="52dp" />
     </LinearLayout>
 </LinearLayout>

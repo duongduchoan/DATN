@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA">
+    android:background="@color/qlpt_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,9 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:text="Tổng quan"
-            android:textColor="#009688"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.ScreenTitle" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,6 +151,6 @@
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_margin="6dp"
-            android:background="#FFFFFF" />
+            android:background="@color/qlpt_surface" />
     </LinearLayout>
 </ScrollView>

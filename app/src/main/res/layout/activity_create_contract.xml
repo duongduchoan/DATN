@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
-    android:fillViewport="true">
+    android:background="@color/qlpt_background"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tạo hợp đồng"
-            android:textColor="#009688"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.ScreenTitle" />
 
         <TextView
             android:id="@+id/tvRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.QLPT.CardTitle" />
 
         <TextView
             android:id="@+id/tvTenant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:textAppearance="@style/TextAppearance.QLPT.Body" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -63,24 +65,28 @@
 
         <Button
             android:id="@+id/btnStart"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.QLPT.Button.Outlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chọn ngày bắt đầu" />
+            android:text="Chọn ngày bắt đầu"
+            app:icon="@drawable/ic_event"
+            android:layout_marginTop="8dp" />
 
         <Button
             android:id="@+id/btnEnd"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.QLPT.Button.Outlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chọn ngày kết thúc" />
+            android:text="Chọn ngày kết thúc"
+            app:icon="@drawable/ic_event"
+            android:layout_marginTop="8dp" />
 
         <Button
             android:id="@+id/btnSave"
+            style="@style/Widget.QLPT.Button.Large"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#009688"
             android:text="Tạo hợp đồng" />
 
         <ProgressBar

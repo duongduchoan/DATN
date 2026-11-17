@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
-    android:fillViewport="true">
+    android:background="@color/qlpt_background"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
             android:text="Đặt lịch xem phòng"
-            android:textColor="#009688"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.ScreenTitle" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -88,12 +88,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Số người ở *"
-                    android:textStyle="bold" />
+                    android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
                 <Spinner
                     android:id="@+id/spPeople"
+                    style="@style/Widget.QLPT.Spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp" />
+                    android:layout_height="52dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -107,12 +108,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Số lượng xe *"
-                    android:textStyle="bold" />
+                    android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
                 <Spinner
                     android:id="@+id/spVehicles"
+                    style="@style/Widget.QLPT.Spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp" />
+                    android:layout_height="52dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -133,12 +135,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nuôi thú cưng *"
-                    android:textStyle="bold" />
+                    android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
                 <Spinner
                     android:id="@+id/spPet"
+                    style="@style/Widget.QLPT.Spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp" />
+                    android:layout_height="52dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -152,15 +155,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ngày xem phòng *"
-                    android:textStyle="bold" />
+                    android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
                 <Button
                     android:id="@+id/btnVisitDate"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    style="@style/Widget.QLPT.Button.Outlined"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="Chọn ngày"
-                    android:textAllCaps="false" />
+                    android:text="Chọn ngày" />
             </LinearLayout>
         </LinearLayout>
 
@@ -169,12 +171,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="Thời gian dự kiến vào ở *"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
         <Spinner
             android:id="@+id/spMoveIn"
+            style="@style/Widget.QLPT.Spinner"
             android:layout_width="match_parent"
-            android:layout_height="48dp" />
+            android:layout_height="52dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -219,14 +222,11 @@
 
         <Button
             android:id="@+id/btnSubmit"
+            style="@style/Widget.QLPT.Button.Large"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:backgroundTint="#009688"
-            android:text="Đặt lịch hẹn"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            app:cornerRadius="14dp" />
+            android:text="Đặt lịch hẹn" />
 
         <ProgressBar
             android:id="@+id/progress"

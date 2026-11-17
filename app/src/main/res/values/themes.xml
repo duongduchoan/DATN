@@ -1,14 +1,47 @@
-<resources>
-    <!-- Base application theme. -->
-    <style name="Base.Theme.QLPT" parent="Theme.Material3.DayNight.NoActionBar">
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. Luôn dùng giao diện sáng (không có dark mode). -->
+    <style name="Base.Theme.QLPT" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Màu chủ đạo xanh ngọc -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/qlpt_surface</item>
+        <item name="colorPrimaryContainer">@color/qlpt_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/qlpt_on_primary_container</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Màu phụ: secondaryContainer là vệt chọn của thanh điều hướng dưới -->
+        <item name="colorSecondary">@color/qlpt_accent</item>
+        <item name="colorOnSecondary">@color/qlpt_surface</item>
+        <item name="colorSecondaryContainer">@color/qlpt_primary_container</item>
+        <item name="colorOnSecondaryContainer">@color/qlpt_on_primary_container</item>
+
+        <item name="colorError">@color/qlpt_error</item>
+
+        <!-- Nền và bề mặt -->
+        <item name="android:colorBackground">@color/qlpt_background</item>
+        <item name="colorSurface">@color/qlpt_surface</item>
+        <item name="colorSurfaceContainer">@color/qlpt_surface</item>
+        <item name="colorOnSurface">@color/qlpt_text</item>
+        <item name="colorOnSurfaceVariant">@color/qlpt_text_secondary</item>
+        <item name="colorOutline">@color/qlpt_text_hint</item>
+        <item name="colorOutlineVariant">@color/qlpt_border</item>
+
+        <!-- Thanh trạng thái: màu nền chỉ có tác dụng tới Android 14; màu icon theo values(-v35)/bools.xml -->
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar">@bool/qlpt_light_status_bar</item>
+
+        <!-- Style mặc định cho widget -->
+        <item name="materialButtonStyle">@style/Widget.QLPT.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.QLPT.Button.Outlined</item>
+        <item name="materialCardViewStyle">@style/Widget.QLPT.Card</item>
         <item name="textInputStyle">@style/App.TextInput</item>
+        <item name="bottomNavigationStyle">@style/Widget.QLPT.BottomNav</item>
+        <item name="bottomSheetDialogTheme">@style/ThemeOverlay.QLPT.BottomSheetDialog</item>
     </style>
 
     <style name="App.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <!-- Nền trắng để ô nhập nổi trên nền xám của màn hình, khớp với Spinner -->
+        <item name="boxBackgroundColor">@color/qlpt_surface</item>
         <item name="boxCornerRadiusTopStart">12dp</item>
         <item name="boxCornerRadiusTopEnd">12dp</item>
         <item name="boxCornerRadiusBottomStart">12dp</item>

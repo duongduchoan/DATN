@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
+    android:background="@color/qlpt_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -16,15 +16,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Phòng của tôi"
-            android:textColor="#009688"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.ScreenTitle" />
 
         <!-- Hai thẻ hành động nhanh -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
@@ -35,28 +33,31 @@
                 android:layout_marginEnd="6dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="2dp">
+                android:foreground="?attr/selectableItemBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="14dp">
+                    android:padding="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📨"
-                        android:textSize="26sp" />
+                        android:background="@drawable/bg_icon_circle"
+                        android:drawableStart="@drawable/ic_send"
+                        android:drawableTint="@color/qlpt_primary"
+                        android:gravity="center"
+                        android:padding="12dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="8dp"
                         android:text="Yêu cầu thuê"
+                        android:textColor="@color/qlpt_text"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -69,28 +70,31 @@
                 android:layout_marginStart="6dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="2dp">
+                android:foreground="?attr/selectableItemBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="14dp">
+                    android:padding="16dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="❤️"
-                        android:textSize="26sp" />
+                        android:background="@drawable/bg_icon_circle"
+                        android:drawableStart="@drawable/ic_favorite"
+                        android:drawableTint="@color/qlpt_primary"
+                        android:gravity="center"
+                        android:padding="12dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="8dp"
                         android:text="Phòng đã lưu"
+                        android:textColor="@color/qlpt_text"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -103,9 +107,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:visibility="gone"
-            app:cardBackgroundColor="#009688"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp">
+            app:cardBackgroundColor="@color/qlpt_primary"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,7 +120,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hạn đóng tiền sắp tới"
-                    android:textColor="#FFFFFF"
+                    android:textColor="@color/qlpt_surface"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -125,14 +129,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="#E0F2F1" />
+                    android:textColor="@color/qlpt_primary_container"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvDueAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/qlpt_surface"
                     android:textSize="28sp"
                     android:textStyle="bold" />
 
@@ -140,22 +145,19 @@
                     android:id="@+id/tvDueInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:textColor="#FFFFFF" />
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/qlpt_surface"
+                    android:textSize="14sp" />
 
+                <!-- Màu chữ do Java đặt theo số ngày còn lại -->
                 <TextView
                     android:id="@+id/tvDueStatus"
+                    style="@style/Widget.QLPT.Badge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/bg_badge_white"
-                    android:paddingStart="12dp"
-                    android:paddingTop="4dp"
-                    android:paddingEnd="12dp"
-                    android:paddingBottom="4dp"
-                    android:textColor="#E65100"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/qlpt_warning" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -173,9 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:visibility="gone"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -186,156 +186,168 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="28dp"
+                        android:layout_width="32dp"
                         android:layout_height="wrap_content"
-                        android:text="🏠"
-                        android:textSize="16sp" />
+                        android:drawableStart="@drawable/ic_home"
+                        android:drawableTint="@color/qlpt_primary" />
 
                     <TextView
                         android:id="@+id/tvRoom"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="18sp"
+                        android:textAppearance="@style/TextAppearance.QLPT.CardTitle"
                         android:textStyle="bold" />
                 </LinearLayout>
+
+                <!-- Đường kẻ mảnh tách tên phòng với thông tin -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/qlpt_border" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center_vertical"
+                    android:minHeight="32dp"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="28dp"
+                        android:layout_width="32dp"
                         android:layout_height="wrap_content"
-                        android:text="👤"
-                        android:textSize="16sp" />
+                        android:drawableStart="@drawable/ic_person"
+                        android:drawableTint="@color/qlpt_text_hint" />
 
                     <TextView
                         android:id="@+id/tvLandlord"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.QLPT.Body" />
 
                     <Button
                         android:id="@+id/btnCallLandlord"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        style="@style/Widget.QLPT.Button.Text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📞 Gọi"
-                        android:visibility="gone" />
+                        android:text="Gọi"
+                        android:visibility="gone"
+                        app:icon="@drawable/ic_phone" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="28dp"
+                        android:layout_width="32dp"
                         android:layout_height="wrap_content"
-                        android:text="💰"
-                        android:textSize="16sp" />
+                        android:drawableStart="@drawable/ic_payments"
+                        android:drawableTint="@color/qlpt_text_hint" />
 
                     <TextView
                         android:id="@+id/tvPrice"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="#FF9800"
+                        android:textColor="@color/qlpt_accent"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="28dp"
+                        android:layout_width="32dp"
                         android:layout_height="wrap_content"
-                        android:text="🔒"
-                        android:textSize="16sp" />
+                        android:drawableStart="@drawable/ic_lock"
+                        android:drawableTint="@color/qlpt_text_hint" />
 
                     <TextView
                         android:id="@+id/tvDeposit"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.QLPT.Body" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="28dp"
+                        android:layout_width="32dp"
                         android:layout_height="wrap_content"
-                        android:text="📅"
-                        android:textSize="16sp" />
+                        android:drawableStart="@drawable/ic_event"
+                        android:drawableTint="@color/qlpt_text_hint" />
 
                     <TextView
                         android:id="@+id/tvDates"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.QLPT.Body" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/tvStatus"
+                    style="@style/Widget.QLPT.Badge.Success"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:background="@drawable/bg_badge_green"
-                    android:paddingStart="12dp"
-                    android:paddingTop="4dp"
-                    android:paddingEnd="12dp"
-                    android:paddingBottom="4dp"
-                    android:text="Đang hiệu lực"
-                    android:textColor="#2E7D32"
-                    android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:text="Đang hiệu lực" />
 
                 <TextView
                     android:id="@+id/tvReturnInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textColor="#E65100"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/qlpt_warning"
+                    android:textSize="14sp"
                     android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnReturn"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        style="@style/Widget.QLPT.Button.Outlined"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_marginEnd="6dp"
+                        android:layout_marginEnd="8dp"
                         android:text="Trả phòng"
                         android:visibility="gone" />
 
                     <Button
                         android:id="@+id/btnIncidents"
+                        style="@style/Widget.QLPT.Button.Accent"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:backgroundTint="#FF9800"
-                        android:text="⚠️ Báo sự cố" />
+                        android:text="Báo sự cố"
+                        app:icon="@drawable/ic_warning" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

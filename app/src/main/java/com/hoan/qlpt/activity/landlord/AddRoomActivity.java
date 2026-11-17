@@ -11,9 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.PickVisualMediaRequest;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +24,7 @@ import com.hoan.qlpt.R;
 import com.hoan.qlpt.adapter.ImagePreviewAdapter;
 import com.hoan.qlpt.model.House;
 import com.hoan.qlpt.model.Room;
+import com.hoan.qlpt.util.ImageSourceHelper;
 import com.hoan.qlpt.util.ImageUploader;
 import com.hoan.qlpt.util.MoneyTextWatcher;
 import com.hoan.qlpt.util.RoomDetailsForm;
@@ -41,7 +39,7 @@ public class AddRoomActivity extends AppCompatActivity {
     private final List<Uri> selectedUris = new ArrayList<>();
     private final List<House> houses = new ArrayList<>();
     private ImagePreviewAdapter previewAdapter;
-    private ActivityResultLauncher<PickVisualMediaRequest> picker;
+    private ImageSourceHelper imageSource;
     private RoomDetailsForm form;
     private Spinner spHouse;
     private TextInputEditText edtRoomNumber, edtPrice, edtArea, edtDescription;
@@ -80,8 +78,7 @@ public class AddRoomActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rv.setAdapter(previewAdapter);
 
-        picker = registerForActivityResult(
-                new ActivityResultContracts.PickMultipleVisualMedia(MAX_IMAGES), uris -> {
+        imageSource = new ImageSourceHelper(this, MAX_IMAGES, uris -> {
                     boolean over = false;
                     for (Uri u : uris) {
                         if (selectedUris.contains(u)) continue;
@@ -100,9 +97,7 @@ public class AddRoomActivity extends AppCompatActivity {
                 toast("Đã đủ " + MAX_IMAGES + " ảnh. Hãy xóa bớt trước khi chọn thêm");
                 return;
             }
-            picker.launch(new PickVisualMediaRequest.Builder()
-                    .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
-                    .build());
+            imageSource.show();
         });
 
         btnSave.setOnClickListener(v -> save());

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Nhãn tối bo tròn đặt trên ảnh (vd: số thứ tự ảnh) -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/qlpt_scrim" />
+    <corners android:radius="12dp" />
+</shape>

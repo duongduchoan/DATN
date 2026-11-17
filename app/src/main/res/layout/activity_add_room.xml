@@ -1,57 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- fitsSystemWindows: chừa chỗ cho thanh trạng thái/thanh điều hướng khi Android 15+ ép tràn viền -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
-    android:fillViewport="true">
+    android:background="@color/qlpt_background"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="16dp"
             android:text="Thêm phòng mới"
-            android:textColor="#009688"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.ScreenTitle" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="Nhà trọ"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
         <Spinner
             android:id="@+id/spHouse"
+            style="@style/Widget.QLPT.Spinner"
             android:layout_width="match_parent"
-            android:layout_height="48dp" />
+            android:layout_height="52dp" />
 
         <Button
             android:id="@+id/btnAddHouse"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.QLPT.Button.Outlined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thêm nhà trọ mới"
-            android:textAllCaps="false" />
+            android:layout_marginTop="8dp"
+            android:text="Thêm nhà trọ mới" />
 
         <Button
             android:id="@+id/btnMyHouses"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.QLPT.Button.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nhà trọ của tôi (xem trạng thái)"
-            android:textAllCaps="false" />
+            android:text="Nhà trọ của tôi (xem trạng thái)" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:hint="Số phòng (VD: 203)">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -64,7 +65,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +100,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:hint="Mô tả">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -120,24 +121,34 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="24dp"
             android:text="Ảnh phòng (tối đa 5 ảnh)"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.QLPT.SectionTitle" />
 
-        <Button
-            android:id="@+id/btnPickImages"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chọn ảnh"
-            android:textAllCaps="false" />
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvImageCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chưa chọn ảnh"
-            android:textColor="#666666" />
+            <Button
+                android:id="@+id/btnPickImages"
+                style="@style/Widget.QLPT.Button.Outlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chọn ảnh"
+                app:icon="@drawable/ic_camera" />
+
+            <TextView
+                android:id="@+id/tvImageCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="Chưa chọn ảnh"
+                android:textAppearance="@style/TextAppearance.QLPT.Body" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvImages"
@@ -148,14 +159,11 @@
 
         <Button
             android:id="@+id/btnSave"
+            style="@style/Widget.QLPT.Button.Large"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginTop="18dp"
-            android:backgroundTint="#009688"
-            android:text="Lưu phòng"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            app:cornerRadius="14dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Lưu phòng" />
 
         <ProgressBar
             android:id="@+id/progress"
